@@ -8,11 +8,11 @@ namespace TI2VSQX
 {
     public class TIF
     {
-        [System.Xml.Serialization.XmlElementAttribute("PhonemeLoc")]
-        public int PhonemeLoc { get; set; }                                  //t1:音素位置（0.1マイクロ秒単位)
+        [System.Xml.Serialization.XmlElementAttribute("PhonemeFrom")]
+        public int PhonemeFrom { get; set; }                                 //t1:音素開始位置（0.1マイクロ秒単位)
 
-        [System.Xml.Serialization.XmlElementAttribute("PhonemeLen")]
-        public int PhonemeLen { get; set; }                                  //t2:音素長さ（0.1マイクロ秒単位)
+        [System.Xml.Serialization.XmlElementAttribute("PhonemeTo")]
+        public int PhonemeTo { get; set; }                                   //t2:音素終了位置（0.1マイクロ秒単位)
 
         [System.Xml.Serialization.XmlElementAttribute("PhonemeBeforePrev")]
         public string PhonemeBeforePrev { get; set; }                        //p1:音素（２つ前) 
@@ -170,8 +170,8 @@ namespace TI2VSQX
         public TIF(string Line)
         {
             string[] block = Line.Split('/', ' ');
-            this.PhonemeLoc = Int32.Parse(block[0]);
-            this.PhonemeLen = Int32.Parse(block[1]);
+            this.PhonemeFrom = Int32.Parse(block[0]);
+            this.PhonemeTo = Int32.Parse(block[1]);
             string[] item = block[2].Split('^', '-', '+', '=');
             this.PhonemeBeforePrev = item[0];
             this.PhonemePrev = item[1];
