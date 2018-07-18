@@ -657,8 +657,8 @@ namespace TI2VSQX
                             x2 = x2 * SlopeEnd;
                             x2 = x2 + noteArray[MoraNoteIdxDownStart].noteNum;
                             noteArray[i].noteNum = (byte)Math.Round(x2);
-                            //下降中にアクセント核のモーラが来た場合は音階を維持する
-                            if (TIFArray[i].MoraDiffAccent == "1")
+                            //下降中はアクセント核のモーラが来るまで場合は音階を維持する
+                            if (TIFArray[i].MoraDiffAccent.CompareTo("1") <= 0)
                             {
                                 noteArray[i].noteNum = noteArray[i - 1].noteNum;
                             }
@@ -698,6 +698,9 @@ namespace TI2VSQX
             // 音階を設定した音符情報をvsq3オブジェクトに設定する
             ((musicalPart)(VSQX.vsTrack[0].Items[0])).note = noteArray;
 
+            // パート長さは最後の音符位置から一拍あと
+            ((musicalPart)(VSQX.vsTrack[0].Items[0])).playTime = (int)posTickValue + 30 + 480;
+            
             // トレース情報のリストをシリアライズする
             var xmlSerializer1 = new XmlSerializer(typeof(List<TIF>));
             using (var streamWriter = new StreamWriter(sTIFXPass, false, Encoding.UTF8))
