@@ -447,8 +447,8 @@ namespace TI2VSQX
 
             // 本来はファイルのパスはパラメータで取得するか、実行ファイルのパスに設定するものだが暫定的にソース内直書き
             string sTIFPass  = @"C:\test\open-jtalk\t.txt";    //トレース情報
-            string sTIFXPass = @"C:\test\open-jtalk\tA.xml";   //出力VSQXファイル
-            string sVSQXPass = @"C:\test\open-jtalk\tA.vsqx";  //トレース情報のリストをシリアライズしたもの
+            string sTIFXPass = @"C:\test\open-jtalk\tA.xml";   //トレース情報のリストをシリアライズしたもの
+            string sVSQXPass = @"C:\test\open-jtalk\tA.vsqx";  //出力VSQXファイル
 
             System.IO.StreamReader srTIF = new System.IO.StreamReader(sTIFPass, Encoding.GetEncoding("SHIFT_JIS"));
 
@@ -559,6 +559,7 @@ namespace TI2VSQX
                         }
                     }
 
+                    //下降開始位置の音符の位置情報を取得する
                     if (MoraDownStart == "")
                     {
                         if (I01TIF.MoraDiffAccent == "1")
@@ -648,20 +649,57 @@ namespace TI2VSQX
                     //アクセント核がある場合は
                     if (MoraDownStart != "")
                     {
-                        //下降開始位置から呼気段落末までの傾きを求める
-                        double SlopeEnd = (60.00 - noteArray[MoraNoteIdxDownStart].noteNum) / (MoraLocEnd - MoraLocDownStart);
-                        //下降開始位置から呼気段落末までの音階を設定する
-                        for (int i = MoraNoteIdxDownStart + 2; i <= MoraNoteIdxEnd; i++)
+                        int MoraDiff = 0;
+
+                        //下降開始位置から呼気段落末までの時間（但し、アクセント核手前の音素を除く）を求める
+                        double SlopeLen = 0;
+                        for (int i = MoraNoteIdxDownStart ; i <= MoraNoteIdxEnd; i++)
                         {
-                            double x2 = (noteArray[i].posTick - noteArray[MoraNoteIdxDownStart].posTick);
-                            x2 = x2 * SlopeEnd;
-                            x2 = x2 + noteArray[MoraNoteIdxDownStart].noteNum;
-                            noteArray[i].noteNum = (byte)Math.Round(x2);
-                            //下降中はアクセント核のモーラが来るまで場合は音階を維持する
-                            if (TIFArray[i].MoraDiffAccent.CompareTo("1") <= 0)
+                            MoraDiff = Convert.ToInt32(TIFArray[i].MoraDiffAccent);
+                            if (MoraDiff >= 0)
                             {
-                                noteArray[i].noteNum = noteArray[i - 1].noteNum;
+                                SlopeLen = SlopeLen + noteArray[i].durTick;
                             }
+                        };
+
+                        //下降開始位置から呼気段落末までの傾きを求める
+                        double SlopeEnd = (60.00 - noteArray[MoraNoteIdxDownStart].noteNum) / SlopeLen;
+                        double x2 = 0;
+                        double SlopePos = noteArray[MoraNoteIdxDownStart].posTick;
+                        MoraDiff = 0;
+                        double DownLen = 0;
+                        double DownWidth = 0;
+                        double DownPos = 0;
+                        //下降開始位置から呼気段落末までの音階を設定する
+                        for (int i = MoraNoteIdxDownStart; i <= MoraNoteIdxEnd; i++)
+                        {
+                            MoraDiff = Convert.ToInt32(TIFArray[i].MoraDiffAccent);
+                            //アクセント核手前では自然下降でノート位置を求める
+                            if (MoraDiff < 0)
+                            {
+                                DownLen = (noteArray[i].posTick - noteArray[MoraNoteIdxDownStart].posTick);
+                                DownWidth = DownLen * SlopeNatural;
+                                x2 = DownWidth + DownPos;
+                                noteArray[i].noteNum = (byte)Math.Round(x2);
+                            }
+                            //アクセント核からあとは句末への下降傾きを適用する
+                            else
+                            {
+                                DownLen = (SlopePos - noteArray[MoraNoteIdxDownStart].posTick);
+                                DownWidth = DownLen * SlopeEnd;
+                                x2 = DownWidth + noteArray[MoraNoteIdxDownStart].noteNum;
+                                DownPos = x2;
+                                SlopePos = SlopePos + noteArray[i].durTick;
+                                noteArray[i].noteNum = (byte)Math.Round(x2);
+                                //計算の結果上昇するなら前の音階とそろえる
+                                if (MoraDiff == 0)
+                                {
+                                    if (noteArray[i].noteNum > noteArray[i - 1].noteNum)
+                                    {
+                                        noteArray[i].noteNum = noteArray[i - 1].noteNum;
+                                    };
+                                };
+                            };
                         };
                     };
 
