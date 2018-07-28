@@ -1,8 +1,19 @@
-﻿using System;
+﻿/*
+ * vsq3.cs
+ * Copyright c 2018 yo_xxx
+ *
+ * This file is part of TI2VSQX.
+ *
+ * TI2VSQX is free software; you can redistribute it and/or
+ * modify it under the terms of the BSD License.
+ *
+ * TI2VSQX is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace TI2VSQX
@@ -40,7 +51,7 @@ namespace TI2VSQX
 
         private aux[] auxField;
 
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection vender
         {
             get
@@ -52,7 +63,7 @@ namespace TI2VSQX
                 this.venderField = value.Value;
             }
         }
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection version
         {
             get
@@ -208,7 +219,7 @@ namespace TI2VSQX
             }
         }
 
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection compID
         {
             get
@@ -221,7 +232,7 @@ namespace TI2VSQX
             }
         }
 
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection vVoiceName
         {
             get
@@ -1279,7 +1290,7 @@ namespace TI2VSQX
 
         private tempo[] tempoField;
 
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection seqName
         {
             get
@@ -1292,7 +1303,7 @@ namespace TI2VSQX
             }
         }
 
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection comment
         {
             get
@@ -1488,7 +1499,7 @@ namespace TI2VSQX
             }
         }
 
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection trackName
         {
             get
@@ -1501,7 +1512,7 @@ namespace TI2VSQX
             }
         }
 
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection comment
         {
             get
@@ -1588,7 +1599,7 @@ namespace TI2VSQX
             }
         }
 
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection partName
         {
             get
@@ -1601,7 +1612,7 @@ namespace TI2VSQX
             }
         }
 
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection comment
         {
             get
@@ -1728,7 +1739,7 @@ namespace TI2VSQX
 
         private string versionField;
 
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection stylePluginID
         {
             get
@@ -1741,7 +1752,7 @@ namespace TI2VSQX
             }
         }
 
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection stylePluginName
         {
             get
@@ -1754,7 +1765,7 @@ namespace TI2VSQX
             }
         }
 
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection version
         {
             get
@@ -2024,7 +2035,7 @@ namespace TI2VSQX
             }
         }
 
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection lyric
         {
             get
@@ -2721,7 +2732,7 @@ namespace TI2VSQX
 
         private string contentField;
 
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection auxID
         {
             get
@@ -2734,7 +2745,7 @@ namespace TI2VSQX
             }
         }
 
-        /// <remarks/>
+        /// CDATAセクションに変更<remarks/>
         public XmlCDataSection content
         {
             get

@@ -1,19 +1,31 @@
-﻿using System;
+﻿/*
+ * Program.cs
+ * Copyright c 2018 yo_xxx
+ *
+ * This file is part of TI2VSQX.
+ *
+ * TI2VSQX is free software; you can redistribute it and/or
+ * modify it under the terms of the BSD License.
+ *
+ * TI2VSQX is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
-using static System.Console;
 
 namespace TI2VSQX
 {
 
     class Program
     {
-        //モーラ情報と音素をもとに、VOCALOIDの発音記号(X-SAMPA)を求めるためのテーブルの構造体　
+        /// <summary>
+        /// モーラ情報と音素をもとに、VOCALOIDの発音記号(X-SAMPA)を求めるためのテーブルのレコードの構造体
+        /// </summary>
         public struct jpcommonMora
         {
             public string moraValue;
@@ -24,7 +36,9 @@ namespace TI2VSQX
             public string PhonemeXSN;
         };
 
-        //モーラ情報と音素をもとに、VOCALOIDの発音記号(X-SAMPA)を求めるためのテーブル　
+        /// <summary>
+        /// モーラ情報と音素をもとに、VOCALOIDの発音記号(X-SAMPA)を求めるためのテーブル
+        /// </summary>
         static public jpcommonMora[] jpcommonMoraArray = new jpcommonMora[]
         {
             new jpcommonMora { moraValue = "ヴョ", PhonemeHead = "by", PhonemeTail = "o", PhonemeXSHead = "b"   , PhonemeXSTail = "o" , PhonemeXSN = "n" },
@@ -197,19 +211,47 @@ namespace TI2VSQX
             new jpcommonMora { moraValue = ""    , PhonemeHead = ""  , PhonemeTail = "" , PhonemeXSHead = ""    , PhonemeXSTail = ""  , PhonemeXSN = "" }
         };
 
-        //発音記号を求める
-        static public string PhonemeXS(string moraValue, string Phoneme)
+        /// <summary>
+        /// モーラの文字と音素から発音記号（X-SAMPA）を求める
+        /// </summary>
+        /// <param name="moraValue">モーラの文字</param>
+        /// <param name="Phoneme">現在の音素</param>
+        /// <param name="nextPhonemeValue">次の音素</param>
+        /// <returns>発音記号</returns>
+        static public string PhonemeXS(string moraValue, string Phoneme,string nextPhonemeValue)
         {
-            //無声化している場合は音符に「Asp」を設定する
+            //文末で「う」で無声化している場合は音符に「Asp」を設定する
             switch (Phoneme)
             {
                 case "A":
+                    Phoneme = "a";
+                    break;
                 case "I":
+                    Phoneme = "i";
+                    break;
                 case "U":
+                    if (nextPhonemeValue == "sil" | nextPhonemeValue == "pau")
+                    {
+                        return "Asp";
+                    }
+                    Phoneme = "u";
+                    break;
                 case "E":
+                    Phoneme = "e";
+                    break;
                 case "O":
-                    return "Asp";
+                    Phoneme = "o";
+                    break;
             };
+
+            //無声化してモーラに「’」がある場合は取り除いて判定に使う
+            if (moraValue.Length > 1)
+            {
+                if (moraValue.Substring(1, 1) == "’")
+                {
+                    moraValue = moraValue.Substring(0, 1);
+                }
+            }
 
             //発音記号はモーラと音素をもとに配列検索して求める
             for (int i = 0; i < jpcommonMoraArray.Length; i++)
@@ -228,7 +270,12 @@ namespace TI2VSQX
             return Phoneme;
         }
 
-        //「ん」の発音記号を求める
+        /// <summary>
+        /// 音素から「ん」の発音記号（X-SAMPA）を求める（Wikipedia「日本語の音韻」の「撥音/N/の子音」の項目参照）
+        /// </summary>
+        /// <param name="nextPhonemeValue">次の音素</param>
+        /// <param name="afternextPhonemeValue">次の次の音素</param>
+        /// <returns>発音記号</returns>
         static public string PhonemeXSN(string nextPhonemeValue, string afternextPhonemeValue)
         {
             //「ん」の発音記号は次とその次の音素をもとに配列検索して求める
@@ -252,8 +299,13 @@ namespace TI2VSQX
             return "N\\";
         }
 
-        // vsq3オブジェクトの初期化
-        static vsq3 VSQX_Init()
+        /// <summary>
+        /// vsq3オブジェクト(VOCALOID3用VSQX)を初期化する
+        /// </summary>
+        /// <param name="compIDValue">シンガーのcompID</param>
+        /// <param name="vVoiceNamevalue">シンガー名</param>
+        /// <returns>vsq3クラスのオブジェクト（初期設定済）</returns>
+        static vsq3 VSQX_Init(string compIDValue, string vVoiceNamevalue)
         {
             vsq3 VSQX = new vsq3();
 
@@ -262,10 +314,10 @@ namespace TI2VSQX
 
             VSQX.vVoiceTable = new vVoice[] { new vVoice { } };
 
-            VSQX.vVoiceTable[0].compID = new XmlDocument().CreateCDataSection("BCNFCY43LB2LZCD4");
+            VSQX.vVoiceTable[0].compID = new XmlDocument().CreateCDataSection(compIDValue);
             VSQX.vVoiceTable[0].vBS = 0;
             VSQX.vVoiceTable[0].vPC = 0;
-            VSQX.vVoiceTable[0].vVoiceName = new XmlDocument().CreateCDataSection("MIKU_V4X_Original_EVEC");
+            VSQX.vVoiceTable[0].vVoiceName = new XmlDocument().CreateCDataSection(vVoiceNamevalue);
 
             VSQX.vVoiceTable[0].vVoiceParam = new vVoiceParam { };
 
@@ -279,61 +331,64 @@ namespace TI2VSQX
 
             VSQX.mixer.masterUnit = new masterUnit { };
 
-            VSQX.mixer.masterUnit.outDev = 0;
+            VSQX.mixer.masterUnit.outDev   = 0;
             VSQX.mixer.masterUnit.retLevel = 0;
-            VSQX.mixer.masterUnit.vol = 0;
+            VSQX.mixer.masterUnit.vol      = 0;
 
             VSQX.mixer.vsUnit = new vsUnit[] { new vsUnit { } };
 
-            VSQX.mixer.vsUnit[0].vsTrackNo = 0;
-            VSQX.mixer.vsUnit[0].inGain = 0;
-            VSQX.mixer.vsUnit[0].sendLevel = -898;
+            VSQX.mixer.vsUnit[0].vsTrackNo  = 0;
+            VSQX.mixer.vsUnit[0].inGain     = 0;
+            VSQX.mixer.vsUnit[0].sendLevel  = -898;
             VSQX.mixer.vsUnit[0].sendEnable = 0;
-            VSQX.mixer.vsUnit[0].mute = 0;
-            VSQX.mixer.vsUnit[0].solo = 0;
-            VSQX.mixer.vsUnit[0].pan = 64;
-            VSQX.mixer.vsUnit[0].vol = 0;
+            VSQX.mixer.vsUnit[0].mute       = 0;
+            VSQX.mixer.vsUnit[0].solo       = 0;
+            VSQX.mixer.vsUnit[0].pan        = 64;
+            VSQX.mixer.vsUnit[0].vol        = 0;
 
             VSQX.mixer.seUnit = new seUnit { };
 
-            VSQX.mixer.seUnit.inGain = 0;
-            VSQX.mixer.seUnit.sendLevel = -898;
+            VSQX.mixer.seUnit.inGain     = 0;
+            VSQX.mixer.seUnit.sendLevel  = -898;
             VSQX.mixer.seUnit.sendEnable = 0;
-            VSQX.mixer.seUnit.mute = 0;
-            VSQX.mixer.seUnit.solo = 0;
-            VSQX.mixer.seUnit.pan = 64;
-            VSQX.mixer.seUnit.vol = 0;
+            VSQX.mixer.seUnit.mute       = 0;
+            VSQX.mixer.seUnit.solo       = 0;
+            VSQX.mixer.seUnit.pan        = 64;
+            VSQX.mixer.seUnit.vol        = 0;
 
             VSQX.mixer.karaokeUnit = new karaokeUnit { };
 
             VSQX.mixer.karaokeUnit.inGain = 0;
-            VSQX.mixer.karaokeUnit.mute = 0;
-            VSQX.mixer.karaokeUnit.solo = 0;
-            VSQX.mixer.karaokeUnit.vol = -129;
+            VSQX.mixer.karaokeUnit.mute   = 0;
+            VSQX.mixer.karaokeUnit.solo   = 0;
+            VSQX.mixer.karaokeUnit.vol    = -129;
 
             VSQX.masterTrack = new masterTrack { };
 
-            VSQX.masterTrack.seqName = new XmlDocument().CreateCDataSection("Untitled1");
-            VSQX.masterTrack.comment = new XmlDocument().CreateCDataSection("New VSQ File");
+            VSQX.masterTrack.seqName    = new XmlDocument().CreateCDataSection("Untitled1");
+            VSQX.masterTrack.comment    = new XmlDocument().CreateCDataSection("New VSQ File");
             VSQX.masterTrack.resolution = 480;
+            //デフォルトプリメジャーは1小節 
             VSQX.masterTrack.preMeasure = 1;
 
             VSQX.masterTrack.timeSig = new timeSig[] { new timeSig { } };
 
+            //4分の4拍子とする 
             VSQX.masterTrack.timeSig[0].posMes = 0;
-            VSQX.masterTrack.timeSig[0].nume = 4;
+            VSQX.masterTrack.timeSig[0].nume   = 4;
             VSQX.masterTrack.timeSig[0].denomi = 4;
 
             VSQX.masterTrack.tempo = new tempo[] { new tempo { } };
 
+            //トラック先頭からBPM150で設定する（64分音符を25msにするため）
             VSQX.masterTrack.tempo[0].posTick = 0;
-            VSQX.masterTrack.tempo[0].bpm = 15000;
+            VSQX.masterTrack.tempo[0].bpm     = 15000;
 
             VSQX.vsTrack = new vsTrack[] { new vsTrack { } };
 
             VSQX.vsTrack[0].vsTrackNo = 0;
             VSQX.vsTrack[0].trackName = new XmlDocument().CreateCDataSection("Track");
-            VSQX.vsTrack[0].comment = new XmlDocument().CreateCDataSection("Track");
+            VSQX.vsTrack[0].comment   = new XmlDocument().CreateCDataSection("Track");
 
             VSQX.vsTrack[0].Items = new object[]
             {
@@ -378,14 +433,21 @@ namespace TI2VSQX
 
             VSQX.aux = new aux[] { new aux { } };
 
-            VSQX.aux[0].auxID = new XmlDocument().CreateCDataSection("AUX_VST_HOST_CHUNK_INFO");
+            VSQX.aux[0].auxID   = new XmlDocument().CreateCDataSection("AUX_VST_HOST_CHUNK_INFO");
             VSQX.aux[0].content = new XmlDocument().CreateCDataSection("VlNDSwAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=");
 
             return VSQX;
 
         }
 
-        //音符を編集する
+        /// <summary>
+        /// トレース情報と音階と音符長さをもとに、vsq3クラスの音符を編集する
+        /// </summary>
+        /// <param name="I01TIF">入力トレース情報</param>
+        /// <param name="noteNumValue">音階（MIDIノート番号）</param>
+        /// <param name="posTickValue">音符位置（Tick値）</param>
+        /// <param name="durTickValue">音符長さ（Tick値）</param>
+        /// <returns>vsq3クラスの音符</returns>
         static note VSQX_note(TIF I01TIF, byte noteNumValue, Double posTickValue, Double durTickValue)
         {
             string PhonemeXSValue;
@@ -398,7 +460,9 @@ namespace TI2VSQX
             }
             else
             {
-                PhonemeXSValue = PhonemeXS(I01TIF.MoraCurrent, I01TIF.PhonemeCurrent);
+                //トレース情報の音素をもとにボーカロイドで使う発音記号を求める。
+                PhonemeXSValue = PhonemeXS(I01TIF.MoraCurrent, I01TIF.PhonemeCurrent, I01TIF.PhonemeNext);
+                //音素が「ン」の場合は次のモーラの音素を参照して発音記号を求める。
                 if (I01TIF.MoraCurrent == "ン")
                 {
                     PhonemeXSValue = PhonemeXSN(I01TIF.PhonemeNext, I01TIF.PhonemeAfterNext);
@@ -407,18 +471,18 @@ namespace TI2VSQX
 
             var nt = new note
             {
-                posTick  = (int)posTickValue,
-                durTick  = (int)durTickValue,
-                noteNum  = noteNumValue,
+                posTick = (int)posTickValue,
+                durTick = (int)durTickValue,
+                noteNum = noteNumValue,
                 velocity = 64,
-                lyric    = new XmlDocument().CreateCDataSection(I01TIF.PhonemeCurrent),
+                lyric = new XmlDocument().CreateCDataSection(I01TIF.PhonemeCurrent),
 
                 phnms = new typePhonemes
                 {
                     //歌詞がトレース情報の音素情報であり発音記号に変換できないため、プロテクトをかけて発音記号が崩れないようにする。
                     @lock = 1,
                     lockSpecified = true,
-                    Value         = PhonemeXSValue
+                    Value = PhonemeXSValue
                 },
 
                 noteStyle = new noteStyle
@@ -441,19 +505,170 @@ namespace TI2VSQX
             return nt; 
         }
 
-        //メインプログラム
+        /// <summary>
+        /// 各種動作設定を扱うクラス
+        /// </summary>
+        public class TI2VSQXConfig
+        {
+            public string compID;
+            public string vVoiceName;
+            public Double BaseNoteNum;
+            public Double MiddleNoteNum;
+            public Double TopNoteNum;
+            public Double NaturalEndNoteNum;
+            public Double BottomNoteNum;
+            public Double QuestionNoteNum;
+
+            /// <summary>
+            /// 各種動作設定を扱うクラスのコンストラクタ
+            /// </summary>
+            /// <param name="sConfigpass">設定ファイルのパス</param>
+            public TI2VSQXConfig(string sConfigpass)
+            {
+                //デフォルト値設定 
+                compID     = "BCNFCY43LB2LZCD4";
+                vVoiceName = "MIKU_V4X_Original_EVEC";
+                BaseNoteNum       = 62.00;
+                MiddleNoteNum     = 67.00;
+                TopNoteNum        = 70.00;
+                NaturalEndNoteNum = 68.00;
+                BottomNoteNum     = 60.00;
+                QuestionNoteNum   = 66.00;
+
+                if (!System.IO.File.Exists(sConfigpass))
+                {
+                    return;
+                };
+
+                System.IO.StreamReader srConfig = new System.IO.StreamReader(sConfigpass, Encoding.GetEncoding("SHIFT_JIS"));
+
+                string CFG_Line = srConfig.ReadLine();
+                string[] item;
+
+                while (srConfig.EndOfStream == false)
+                {
+                    item = CFG_Line.Split('=');
+                    item[0] = item[0].Trim();
+                    item[1] = item[1].Trim();
+                    switch (item[0])
+                    {
+                        case "compID":
+                            compID = item[1];
+                            break;
+                        case "vVoiceName":
+                            vVoiceName = item[1];
+                            break;
+                        case "BaseNoteNum":
+                            BaseNoteNum = Convert.ToInt32(item[1]);
+                            if ((0 <= BaseNoteNum) & (BaseNoteNum <= 127))
+                            {
+                                BaseNoteNum = BaseNoteNum * 1.00;
+                            }
+                            else
+                            {
+                                BaseNoteNum = 62.00;
+                            }
+                            break;
+                        case "MiddleNoteNum":
+                            MiddleNoteNum = Convert.ToInt32(item[1]);
+                            if ((0 <= MiddleNoteNum) & (MiddleNoteNum <= 127))
+                            {
+                                MiddleNoteNum = MiddleNoteNum * 1.00;
+                            }
+                            else
+                            {
+                                MiddleNoteNum = 67.00;
+                            }
+                            break;
+                        case "TopNoteNum":
+                            TopNoteNum = Convert.ToInt32(item[1]);
+                            if ((0 <= TopNoteNum) & (TopNoteNum <= 127))
+                            {
+                                TopNoteNum = TopNoteNum * 1.00;
+                            }
+                            else
+                            {
+                                TopNoteNum = 70.00;
+                            }
+                            break;
+                        case "NaturalEndNoteNum":
+                            NaturalEndNoteNum = Convert.ToInt32(item[1]);
+                            if ((0 <= NaturalEndNoteNum) & (NaturalEndNoteNum <= 127))
+                            {
+                                NaturalEndNoteNum = NaturalEndNoteNum * 1.00;
+                            }
+                            else
+                            {
+                                NaturalEndNoteNum = 68.00;
+                            }
+                            break;
+                        case "BottomNoteNum":
+                            BottomNoteNum = Convert.ToInt32(item[1]);
+                            if ((0 <= BottomNoteNum) & (BottomNoteNum <= 127))
+                            {
+                                BottomNoteNum = BottomNoteNum * 1.00;
+                            }
+                            else
+                            {
+                                BottomNoteNum = 60.00;
+                            }
+                            break;
+                        case "QuestionNoteNum":
+                            QuestionNoteNum = Convert.ToInt32(item[1]);
+                            if ((0 <= QuestionNoteNum) & (QuestionNoteNum <= 127))
+                            {
+                                QuestionNoteNum = QuestionNoteNum * 1.00;
+                            }
+                            else
+                            {
+                                QuestionNoteNum = 64.00;
+                            }
+                            break;
+                    }
+                    CFG_Line = srConfig.ReadLine();
+                }
+            }
+        }
+
+        /// <summary>
+        /// トレース情報で扱う秒（0.1マイクロ秒）をTick値に変換する。BPM150で64分音符(25ms)単位にする。
+        /// </summary>
+        /// <param name="MicroSecond">トレース情報で扱う秒（0.1マイクロ秒）</param>
+        /// <returns>Tick値変換した値</returns>
+        public static  double MicroSecondToTick(double MicroSecond)
+        {
+            //秒数を64分音符の個数に変換する。BPM150なので64分音符1個は25ms。
+            MicroSecond = MicroSecond / 10000 / 25.00;
+            MicroSecond = Math.Round(MicroSecond);
+            //64分音符の個数をtick値に変換する。64分音符1個は30tick。
+            MicroSecond = MicroSecond * 30;
+            return MicroSecond;
+        }
+
+        /// <summary>
+        /// メインプログラム
+        /// </summary>
         static void Main(string[] args)
         {
 
-            // 本来はファイルのパスはパラメータで取得するか、実行ファイルのパスに設定するものだが暫定的にソース内直書き
-            string sTIFPass  = @"C:\test\open-jtalk\t.txt";    //トレース情報
-            string sTIFXPass = @"C:\test\open-jtalk\tA.xml";   //トレース情報のリストをシリアライズしたもの
-            string sVSQXPass = @"C:\test\open-jtalk\tA.vsqx";  //出力VSQXファイル
+            // 各種ファイルのパスをコマンドライン引数から取得する
+            string sConfigPass = args[0];  //設定情報
+            string sTIFPass    = args[1];  //入力するトレース情報
+            string sTIFXAPass  = args[2];  //入力したトレース情報のリストをシリアライズしたもの
+            string sTIFXPass   = args[3];  //入力したトレース情報のリストをシリアライズしたもの
+            string sVSQXPass   = args[4];  //出力VSQXファイル
 
-            System.IO.StreamReader srTIF = new System.IO.StreamReader(sTIFPass, Encoding.GetEncoding("SHIFT_JIS"));
+            if (!System.IO.File.Exists(sTIFPass))
+            {
+                Console.WriteLine("'" + sTIFPass + "'は存在しません。");
+                return;
+            }
+
+            // 設定情報を読んで設定情報を取得する
+            var TI2VSQXCFG = new TI2VSQXConfig(sConfigPass);
 
             // vsq3オブジェクトの初期設定
-            var VSQX = VSQX_Init();
+            var VSQX = VSQX_Init(TI2VSQXCFG.compID, TI2VSQXCFG.vVoiceName);
 
             // 音符情報と、対応するトレース情報リストのレコード情報を格納する配列を暫定的に要素10000個で設定
             var noteArray = new note[10000];
@@ -468,9 +683,49 @@ namespace TI2VSQX
             Double posTickValue = 0;
             Double durTickValue = 0;
 
+            System.IO.StreamReader srTIF = new System.IO.StreamReader(sTIFPass, Encoding.GetEncoding("SHIFT_JIS"));
+
             TIF I01TIF;
             string I01_Line = srTIF.ReadLine();
-            while (srTIF.EndOfStream == false)
+
+            //トレース情報をテキスト解析情報のタイトルまで読み飛ばす
+            while ((srTIF.EndOfStream == false) & (I01_Line != "[Text analysis result]"))
+            {
+                I01_Line = srTIF.ReadLine();
+            }
+
+            //タイトルは読み飛ばす
+            if (srTIF.EndOfStream == false)
+            {
+                I01_Line = srTIF.ReadLine();
+            }
+
+            TIF_TextAnalysis   I01TIFTXA;
+            var T01TIFTXA = new List<TIF_TextAnalysis>();
+
+            //テキスト解析情報を読み終わるで処理する
+            while ((srTIF.EndOfStream == false) & (I01_Line != ""))
+            {
+                I01TIFTXA = new TIF_TextAnalysis(I01_Line);
+                //テキスト解析情報のシリアライズ用にリストに追加する
+                T01TIFTXA.Add(I01TIFTXA);
+                I01_Line = srTIF.ReadLine();
+            }
+
+            //トレース情報をラベル情報のタイトルまで読み飛ばす
+            while ((srTIF.EndOfStream == false) & (I01_Line != "[Output label]"))
+            {
+                I01_Line = srTIF.ReadLine();
+            }
+
+            //タイトルは読み飛ばす
+            if (srTIF.EndOfStream == false)
+            {
+                I01_Line = srTIF.ReadLine();
+            }
+
+            //出力ラベル情報を読み終わるで処理する
+            while ((srTIF.EndOfStream == false) & (I01_Line != ""))
             {
                 I01TIF = new TIF(I01_Line);
 
@@ -494,78 +749,70 @@ namespace TI2VSQX
                 int MoraLocTop     = 0;
                 int MoraNoteIdxTop = 0;
                 String MoraDownStart     = "";
-                int MoraLocDownStart  = 0;
+                int MoraLocDownStart     = 0;
                 int MoraNoteIdxDownStart = 0;
                 String MoraEnd     = "";
                 int MoraLocEnd     = 0;
                 int MoraNoteIdxEnd = 0;
 
-                //音符位置を64分音符の個数に変換する。BPM150なので64分音符1個は25ms。
-                posTickValue = I01TIF.PhonemeFrom / 10000 / 25.00;
-                //音符位置をtick値に変換する。64分音符1個は30tick。
-                posTickValue = Math.Round(posTickValue) * 30;
+                //音符位置をTick値に変換する。
+                posTickValue = MicroSecondToTick(I01TIF.PhonemeFrom);
+
+                string OldMoraDiffAccent  = I01TIF.MoraDiffAccent;
+                string OldMoraPosForward  = I01TIF.MoraPosForward;
+                string OldMoraPosBackward = I01TIF.MoraPosBackward;
 
                 //呼気段落末までの繰り返し
                 while (I01TIF.BreathPosInUtteranceForward != "xx")
                 {
 
-                    //音符長さを64分音符の個数に変換する。BPM150なので64分音符1個は25ms。
-                    durTickValue = (I01TIF.PhonemeTo - I01TIF.PhonemeFrom) / 10000 / 25.00;
-                    //音符長さをtick値に変換する。64分音符1個は30tick。
-                    durTickValue = Math.Round(durTickValue) * 30;
+                    //音符長さを求める
+                    durTickValue = MicroSecondToTick(I01TIF.PhonemeTo - I01TIF.PhonemeFrom);
 
                     //音符を配列に追加
-                    noteArray[noteIdx] = VSQX_note(I01TIF, 62, posTickValue, durTickValue);
+                    noteArray[noteIdx] = VSQX_note(I01TIF, (byte)TI2VSQXCFG.BaseNoteNum, posTickValue, durTickValue);
                     TIFArray[noteIdx]  = I01TIF;
 
                     //１モーラ目～４モーラ目までの開始位置の音符の位置情報を取得する
                     if (Mora1 == "")
                     {
-                        if (I01TIF.MoraPosForward == "1")
-                        {
-                            Mora1        = I01TIF.MoraCurrent;
-                            MoraLoc1     = (int)posTickValue;
-                            MoraNoteIdx1 = noteIdx;
-                        }
+                        Mora1        = I01TIF.MoraCurrent;
+                        MoraLoc1     = (int)posTickValue;
+                        MoraNoteIdx1 = noteIdx;
                     }
 
-                    if (Mora2 == "")
+                    //モーラが変わったか判定する
+                    if ((OldMoraDiffAccent != I01TIF.MoraDiffAccent) |
+                        (OldMoraPosForward != I01TIF.MoraPosForward) |
+                        (OldMoraPosBackward != I01TIF.MoraPosBackward))
                     {
-                        if (I01TIF.MoraPosForward == "2")
+                        if (Mora2 == "")
                         {
                             Mora2        = I01TIF.MoraCurrent;
                             MoraLoc2     = (int)posTickValue;
                             MoraNoteIdx2 = noteIdx;
-                        }
-                    }
-
-                    if (Mora3 == "")
-                    {
-                        if (I01TIF.MoraPosForward == "3")
+                        }else if (Mora3 == "")
                         {
                             Mora3        = I01TIF.MoraCurrent;
                             MoraLoc3     = (int)posTickValue;
                             MoraNoteIdx3 = noteIdx;
-                        }
-                    }
-
-                    if (Mora4 == "")
-                    {
-                        if (I01TIF.MoraPosForward == "4")
+                        }else if (Mora4 == "")
                         {
                             Mora4        = I01TIF.MoraCurrent;
                             MoraLoc4     = (int)posTickValue;
                             MoraNoteIdx4 = noteIdx;
                         }
                     }
+                    OldMoraDiffAccent = I01TIF.MoraDiffAccent;
+                    OldMoraPosForward = I01TIF.MoraPosForward;
+                    OldMoraPosBackward = I01TIF.MoraPosBackward;
 
-                    //下降開始位置の音符の位置情報を取得する
+                    //最初のアクセント核モーラ開始位置の音符の位置情報を取得する（下降開始位置への調整は後で行う）
                     if (MoraDownStart == "")
                     {
-                        if (I01TIF.MoraDiffAccent == "1")
+                        if (I01TIF.MoraDiffAccent == "0")
                         {
                             MoraDownStart        = I01TIF.MoraCurrent;
-                            MoraLocDownStart     = (int)posTickValue + (int)durTickValue ;
                             MoraNoteIdxDownStart = noteIdx;
                         }
                     }
@@ -593,6 +840,75 @@ namespace TI2VSQX
                 //呼気段落内に音素がある場合は(「音素がない」のは先頭空白のみのはず）
                 if (noteIdxInUtterance != 0)
                 {
+                    //アクセント核がある場合は下降開始位置を求める。
+                    //基本はアクセント核の次のモーラ開始位置だが、
+                    //次のモーラの音素数が１つ（あ段）の場合はアクセント核の最終音素を開始位置とする
+                    if (MoraDownStart != "")
+                    {
+                        //次の音素がある場合
+                        if ((MoraNoteIdxDownStart + 1) <= MoraNoteIdxEnd)
+                        {
+                            //次の音素がアクセント核のモーラの時は
+                            if (T01TIF[MoraNoteIdxDownStart + 1].MoraDiffAccent == "0")
+                            {
+                                //次の次の音素がある場合
+                                if ((MoraNoteIdxDownStart + 2) <= MoraNoteIdxEnd)
+                                {
+                                    //次の次の音素が同じアクセント句の次のモーラの場合は
+                                    if (T01TIF[MoraNoteIdxDownStart + 2].MoraDiffAccent == "1")
+                                    {
+                                        MoraNoteIdxDownStart = MoraNoteIdxDownStart + 2;
+                                        MoraDownStart = T01TIF[MoraNoteIdxDownStart].MoraCurrent;
+                                        //音符位置をtick値に変換する。
+                                        MoraLocDownStart = (int)MicroSecondToTick(T01TIF[MoraNoteIdxDownStart].PhonemeFrom);
+                                    }
+                                    //次の次の音素が別のアクセント句のモーラの場合は
+                                    else
+                                    {
+                                        MoraNoteIdxDownStart = MoraNoteIdxDownStart + 1;
+                                        MoraDownStart = T01TIF[MoraNoteIdxDownStart].MoraCurrent;
+                                        //音符位置をtick値に変換する。
+                                        MoraLocDownStart = (int)MicroSecondToTick(T01TIF[MoraNoteIdxDownStart].PhonemeFrom);
+                                    }
+                                }
+                                //次の次の音素がない場合
+                                else
+                                {
+                                    MoraNoteIdxDownStart = MoraNoteIdxDownStart + 1;
+                                    MoraDownStart = T01TIF[MoraNoteIdxDownStart].MoraCurrent;
+                                    //音符位置をtick値に変換する。
+                                    MoraLocDownStart = (int)MicroSecondToTick(T01TIF[MoraNoteIdxDownStart].PhonemeFrom);
+                                }
+                            }
+                            //次の音素がアクセント核のモーラでない時は
+                            else
+                            {
+                                //次の音素が同じアクセント句の次のモーラの場合は
+                                if (T01TIF[MoraNoteIdxDownStart + 1].MoraDiffAccent == "1")
+                                {
+                                    MoraNoteIdxDownStart = MoraNoteIdxDownStart + 1;
+                                    MoraDownStart = T01TIF[MoraNoteIdxDownStart].MoraCurrent;
+                                    //音符位置をtick値に変換する。
+                                    MoraLocDownStart = (int)MicroSecondToTick(T01TIF[MoraNoteIdxDownStart].PhonemeFrom);
+                                }
+                                //次の音素が別のアクセント句のモーラの場合は
+                                else
+                                {
+                                    //先頭がアクセント核でかつ音素数が１つの場合の下降開始位置としてアクセント核の音素終了位置を設定する
+                                    //音符位置をtick値に変換する。
+                                    MoraLocDownStart = (int)MicroSecondToTick(T01TIF[MoraNoteIdxDownStart].PhonemeTo);
+                                }
+                            }
+                        }
+                        //次の音素がない場合
+                        else
+                        {
+                            //下降開始位置としてアクセント核の音素終了位置を設定する
+                            //音符位置をtick値に変換する。
+                            MoraLocDownStart = (int)MicroSecondToTick(T01TIF[MoraNoteIdxDownStart].PhonemeTo);
+                        }
+                    }
+
                     //句頭上昇位置を求める。基本は２モーラ目直後の音符
                     MoraTop          = Mora2;
                     MoraLocTop       = MoraLoc3;
@@ -621,7 +937,7 @@ namespace TI2VSQX
                     }
 
                     //１モーラ目がアクセント核の場合は１モーラ目直後にずらす
-                    if (MoraNoteIdxDownStart == MoraNoteIdx2)
+                    if (MoraNoteIdxDownStart <= MoraNoteIdx2)
                     {
                         MoraTop          = Mora1;
                         MoraLocTop       = MoraLoc2;
@@ -631,20 +947,23 @@ namespace TI2VSQX
                     }
 
                     //句頭上昇部分の音階を設定する
-                    noteArray[MoraNoteIdxTop].noteNum     = 70;
-                    noteArray[MoraNoteIdxTop - 1].noteNum = 67;
+                    noteArray[MoraNoteIdxTop].noteNum     = (byte)TI2VSQXCFG.TopNoteNum;
+                    if (MoraNoteIdxTop != MoraNoteIdx1)
+                    {
+                        noteArray[MoraNoteIdxTop - 1].noteNum = (byte)TI2VSQXCFG.MiddleNoteNum;
+                    } 
 
                     //音階頂点位置から呼気段落末(音の高さは自然下降のみとする)までの傾きを求める
-                    double SlopeNatural = (68.00 - 70.00) / (MoraLocEnd - MoraLocTop);
+                    double SlopeNatural = (TI2VSQXCFG.NaturalEndNoteNum - TI2VSQXCFG.TopNoteNum) / (MoraLocEnd - MoraLocTop);
 
                     //一旦、音の高さは自然下降のみとして、音階頂点位置から呼気段落末手前までの音階を設定する
                     for (int i = MoraNoteIdxTop + 1; i <= MoraNoteIdxEnd; i++)
                     {
                         double x1 = (noteArray[i].posTick - noteArray[MoraNoteIdxTop].posTick);
                         x1 = x1 * SlopeNatural;
-                        x1 = x1 + 70.00;
+                        x1 = x1 + TI2VSQXCFG.TopNoteNum;
                         noteArray[i].noteNum = (byte)Math.Round(x1);
-                    };
+                    }
 
                     //アクセント核がある場合は
                     if (MoraDownStart != "")
@@ -660,16 +979,16 @@ namespace TI2VSQX
                             {
                                 SlopeLen = SlopeLen + noteArray[i].durTick;
                             }
-                        };
+                        }
 
                         //下降開始位置から呼気段落末までの傾きを求める
-                        double SlopeEnd = (60.00 - noteArray[MoraNoteIdxDownStart].noteNum) / SlopeLen;
+                        double SlopeEnd = (TI2VSQXCFG.BottomNoteNum - noteArray[MoraNoteIdxDownStart].noteNum) / SlopeLen;
                         double x2 = 0;
                         double SlopePos = noteArray[MoraNoteIdxDownStart].posTick;
                         MoraDiff = 0;
-                        double DownLen = 0;
+                        double DownLen   = 0;
                         double DownWidth = 0;
-                        double DownPos = 0;
+                        double DownPos   = 0;
                         //下降開始位置から呼気段落末までの音階を設定する
                         for (int i = MoraNoteIdxDownStart; i <= MoraNoteIdxEnd; i++)
                         {
@@ -677,7 +996,7 @@ namespace TI2VSQX
                             //アクセント核手前では自然下降でノート位置を求める
                             if (MoraDiff < 0)
                             {
-                                DownLen = (noteArray[i].posTick - noteArray[MoraNoteIdxDownStart].posTick);
+                                DownLen   = (noteArray[i].posTick - noteArray[MoraNoteIdxDownStart].posTick);
                                 DownWidth = DownLen * SlopeNatural;
                                 x2 = DownWidth + DownPos;
                                 noteArray[i].noteNum = (byte)Math.Round(x2);
@@ -685,39 +1004,54 @@ namespace TI2VSQX
                             //アクセント核からあとは句末への下降傾きを適用する
                             else
                             {
-                                DownLen = (SlopePos - noteArray[MoraNoteIdxDownStart].posTick);
+                                DownLen   = (SlopePos - noteArray[MoraNoteIdxDownStart].posTick);
                                 DownWidth = DownLen * SlopeEnd;
                                 x2 = DownWidth + noteArray[MoraNoteIdxDownStart].noteNum;
-                                DownPos = x2;
+                                DownPos  = x2;
                                 SlopePos = SlopePos + noteArray[i].durTick;
                                 noteArray[i].noteNum = (byte)Math.Round(x2);
                                 //計算の結果上昇するなら前の音階とそろえる
                                 if (MoraDiff == 0)
                                 {
-                                    if (noteArray[i].noteNum > noteArray[i - 1].noteNum)
-                                    {
-                                        noteArray[i].noteNum = noteArray[i - 1].noteNum;
-                                    };
-                                };
-                            };
-                        };
-                    };
-
-                    //呼気段落末直後の空白音符の音階を設定する。疑問文は音階を上げる
-                    if (I01TIF.IsInterrogativePrevAcc == "0")
-                    {
-                        if(MoraDownStart == "")
-                        {
-                            noteNumValue = 68;
-                        }
-                        else
-                        {
-                            noteNumValue = 60;
+                                    if (i != MoraNoteIdxDownStart)
+                                    { 
+                                        if (noteArray[i].noteNum > noteArray[i - 1].noteNum)
+                                        {
+                                            noteArray[i].noteNum = noteArray[i - 1].noteNum;
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
+
+                    //呼気段落末直後の空白音符の音階を設定する。
+                    if (I01TIF.IsInterrogativePrevAcc == "0")
+                    {
+                        //アクセント核を持たない場合は自然下降した先の音程とする
+                        if (MoraDownStart == "")
+                        {
+                            noteNumValue = (byte)TI2VSQXCFG.NaturalEndNoteNum;
+                        }
+                        //アクセント核を持つ場合 
+                        else
+                        {
+                            //アクセント核で終わっている場合はアクセント核の音程を維持する
+                            if (T01TIF[noteIdx - 1].MoraDiffAccent == "0")
+                            {
+                                noteNumValue = noteArray[noteIdx - 1].noteNum;
+                            }
+                            //アクセント核で終わってない場合は文末の音程に下げていく
+                            else
+                            {
+                                noteNumValue = (byte)TI2VSQXCFG.BottomNoteNum;
+                            }
+                        }
+                    }
+                    //疑問文は音階を上げる
                     else
                     {
-                        noteNumValue = 64;
+                        noteNumValue = (byte)TI2VSQXCFG.QuestionNoteNum;
                     }
 
                     //呼気段落末直後の空白音符の長さは64分音符1個分
@@ -729,7 +1063,9 @@ namespace TI2VSQX
                     T01TIF.Add(I01TIF);
 
                  }
+                 //次のトレース情報を読む
                  I01_Line = srTIF.ReadLine();
+
             }
             srTIF.Close();
 
@@ -738,23 +1074,31 @@ namespace TI2VSQX
 
             // パート長さは最後の音符位置から一拍あと
             ((musicalPart)(VSQX.vsTrack[0].Items[0])).playTime = (int)posTickValue + 30 + 480;
-            
-            // トレース情報のリストをシリアライズする
-            var xmlSerializer1 = new XmlSerializer(typeof(List<TIF>));
+
+            // トレース情報のテキスト解析情報リストをシリアライズする
+            var xmlSerializer1 = new XmlSerializer(typeof(List<TIF_TextAnalysis>));
+            using (var streamWriter = new StreamWriter(sTIFXAPass, false, Encoding.UTF8))
+            {
+                xmlSerializer1.Serialize(streamWriter, T01TIFTXA);
+                streamWriter.Flush();
+            }
+
+            // トレース情報の出力ラベル情報リストをシリアライズする
+            var xmlSerializer2 = new XmlSerializer(typeof(List<TIF>));
             using (var streamWriter = new StreamWriter(sTIFXPass, false, Encoding.UTF8))
             {
-                xmlSerializer1.Serialize(streamWriter, T01TIF);
+                xmlSerializer2.Serialize(streamWriter, T01TIF);
                 streamWriter.Flush();
             }
 
             // vsq3オブジェクトをシリアライズする
-            var xmlSerializer2 = new XmlSerializer(typeof(vsq3));
+            var xmlSerializer3 = new XmlSerializer(typeof(vsq3));
             using (var streamWriter = new StreamWriter(sVSQXPass, false, Encoding.UTF8))
             {
-                xmlSerializer2.Serialize(streamWriter, VSQX);
+                xmlSerializer3.Serialize(streamWriter, VSQX);
                 streamWriter.Flush();
             }
 
         }
-   }
+    }
 }

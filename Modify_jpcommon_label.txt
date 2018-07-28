@@ -1,0 +1,20 @@
+﻿TI2VSQXを動かす前提として、Open JTalkのjpcommon_label.cを修正し、出力ラベル情報にモーラ文字も出力させている。
+同ソースコードの687行目以降を以下の通り修正している。
+
+      /* for A: */
+      if (i == 0 || i == label->size - 1 || short_pause_flag == 1)
+         /* TI2VSQX処理用の修正：モーラ文字出力列追加*/
+         /*sprintf(buff, "/A:xx+xx+xx"); */
+         sprintf(buff, "/A:xx+xx+xx=");
+      else {
+         tmp1 = index_mora_in_accent_phrase(p->up);
+         tmp2 =
+             p->up->up->up->accent ==
+             0 ? count_mora_in_accent_phrase(p->up) : p->up->up->up->accent;
+         /* TI2VSQX処理用の修正：モーラ文字出力列追加*/
+         /*sprintf(buff, "/A:%d+%d+%d", limit(tmp1 - tmp2, -MAX_M, MAX_M), limit(tmp1, 1, MAX_M), */
+         /*        limit(count_mora_in_accent_phrase(p->up) - tmp1 + 1, 1, MAX_M));*/
+         sprintf(buff, "/A:%d+%d+%d=%s", limit(tmp1 - tmp2, -MAX_M, MAX_M), limit(tmp1, 1, MAX_M),
+                 limit(count_mora_in_accent_phrase(p->up) - tmp1 + 1, 1, MAX_M),p->up->mora);
+      }
+      strcat(label->feature[i], buff);
