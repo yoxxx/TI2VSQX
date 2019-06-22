@@ -488,17 +488,17 @@ namespace TI2VSQX
                 noteStyle = new noteStyle
                 {
                     attr = new typeParamAttr[]
-                        {
-                            new typeParamAttr { id = "accent",   Value = 50},
-                            new typeParamAttr { id = "bendDep",  Value = 0},
-                            new typeParamAttr { id = "bendLen",  Value = 0},
-                            new typeParamAttr { id = "decay",    Value = 0},
-                            new typeParamAttr { id = "fallPort", Value = 0},
-                            new typeParamAttr { id = "opening",  Value = 127},
-                            new typeParamAttr { id = "risePort", Value = 0},
-                            new typeParamAttr { id = "vibLen",   Value = 0},
-                            new typeParamAttr { id = "vibType",  Value = 0}
-                        },
+                    {
+                        new typeParamAttr { id = "accent",   Value = 50},
+                        new typeParamAttr { id = "bendDep",  Value = 0},
+                        new typeParamAttr { id = "bendLen",  Value = 0},
+                        new typeParamAttr { id = "decay",    Value = 0},
+                        new typeParamAttr { id = "fallPort", Value = 0},
+                        new typeParamAttr { id = "opening",  Value = 127},
+                        new typeParamAttr { id = "risePort", Value = 0},
+                        new typeParamAttr { id = "vibLen",   Value = 0},
+                        new typeParamAttr { id = "vibType",  Value = 0}
+                    },
                     seqAttr = new seqAttr[] { }
                 }
             };
