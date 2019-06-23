@@ -29,6 +29,7 @@ namespace TI2VSQX
         public struct jpcommonMora
         {
             public string moraValue;
+            public string LyricVSQX;
             public string PhonemeHead;
             public string PhonemeTail;
             public string PhonemeXSHead;
@@ -41,186 +42,287 @@ namespace TI2VSQX
         /// </summary>
         static public jpcommonMora[] jpcommonMoraArray = new jpcommonMora[]
         {
-            new jpcommonMora { moraValue = "ヴョ", PhonemeHead = "by", PhonemeTail = "o", PhonemeXSHead = "b"   , PhonemeXSTail = "o" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ヴュ", PhonemeHead = "by", PhonemeTail = "u", PhonemeXSHead = "b"   , PhonemeXSTail = "M" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ヴャ", PhonemeHead = "by", PhonemeTail = "a", PhonemeXSHead = "b"   , PhonemeXSTail = "M" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ヴォ", PhonemeHead = "v" , PhonemeTail = "o", PhonemeXSHead = "b"   , PhonemeXSTail = "o" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ヴェ", PhonemeHead = "v" , PhonemeTail = "e", PhonemeXSHead = "b"   , PhonemeXSTail = "e" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ヴィ", PhonemeHead = "v" , PhonemeTail = "i", PhonemeXSHead = "b"   , PhonemeXSTail = "i" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ヴァ", PhonemeHead = "v" , PhonemeTail = "a", PhonemeXSHead = "b"   , PhonemeXSTail = "a" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ヴ"  , PhonemeHead = "v" , PhonemeTail = "u", PhonemeXSHead = "b"   , PhonemeXSTail = "M" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ン"  , PhonemeHead = "N" , PhonemeTail = "" , PhonemeXSHead = "N\\" , PhonemeXSTail = ""  , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ヲ"  , PhonemeHead = "o" , PhonemeTail = "" , PhonemeXSHead = "o"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ヱ"  , PhonemeHead = "e" , PhonemeTail = "" , PhonemeXSHead = "w e" , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ヰ"  , PhonemeHead = "i" , PhonemeTail = "" , PhonemeXSHead = "w i" , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ワ"  , PhonemeHead = "w" , PhonemeTail = "a", PhonemeXSHead = "w"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ヮ"  , PhonemeHead = "w" , PhonemeTail = "a", PhonemeXSHead = "w"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ロ"  , PhonemeHead = "r" , PhonemeTail = "o", PhonemeXSHead = "4"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "レ"  , PhonemeHead = "r" , PhonemeTail = "e", PhonemeXSHead = "4"   , PhonemeXSTail = "e" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ル"  , PhonemeHead = "r" , PhonemeTail = "u", PhonemeXSHead = "4"   , PhonemeXSTail = "M" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "リョ", PhonemeHead = "ry", PhonemeTail = "o", PhonemeXSHead = "4'"  , PhonemeXSTail = "o" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "リュ", PhonemeHead = "ry", PhonemeTail = "u", PhonemeXSHead = "4'"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "リャ", PhonemeHead = "ry", PhonemeTail = "a", PhonemeXSHead = "4'"  , PhonemeXSTail = "a" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "リェ", PhonemeHead = "ry", PhonemeTail = "e", PhonemeXSHead = "4'"  , PhonemeXSTail = "e" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "リ"  , PhonemeHead = "r" , PhonemeTail = "i", PhonemeXSHead = "4'"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ラ"  , PhonemeHead = "r" , PhonemeTail = "a", PhonemeXSHead = "4"   , PhonemeXSTail = "a" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ヨ"  , PhonemeHead = "y" , PhonemeTail = "o", PhonemeXSHead = "j"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ョ"  , PhonemeHead = "y" , PhonemeTail = "o", PhonemeXSHead = "j"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ユ"  , PhonemeHead = "y" , PhonemeTail = "u", PhonemeXSHead = "j"   , PhonemeXSTail = "M" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ュ"  , PhonemeHead = "y" , PhonemeTail = "u", PhonemeXSHead = "j"   , PhonemeXSTail = "M" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ヤ"  , PhonemeHead = "y" , PhonemeTail = "a", PhonemeXSHead = "j"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ャ"  , PhonemeHead = "y" , PhonemeTail = "a", PhonemeXSHead = "j"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "モ"  , PhonemeHead = "m" , PhonemeTail = "o", PhonemeXSHead = "m"   , PhonemeXSTail = "o" , PhonemeXSN = "m" },
-            new jpcommonMora { moraValue = "メ"  , PhonemeHead = "m" , PhonemeTail = "e", PhonemeXSHead = "m"   , PhonemeXSTail = "e" , PhonemeXSN = "m" },
-            new jpcommonMora { moraValue = "ム"  , PhonemeHead = "m" , PhonemeTail = "u", PhonemeXSHead = "m"   , PhonemeXSTail = "M" , PhonemeXSN = "m" },
-            new jpcommonMora { moraValue = "ミョ", PhonemeHead = "my", PhonemeTail = "o", PhonemeXSHead = "m'"  , PhonemeXSTail = "o" , PhonemeXSN = "m'" },
-            new jpcommonMora { moraValue = "ミュ", PhonemeHead = "my", PhonemeTail = "u", PhonemeXSHead = "m'"  , PhonemeXSTail = "M" , PhonemeXSN = "m'" },
-            new jpcommonMora { moraValue = "ミャ", PhonemeHead = "my", PhonemeTail = "a", PhonemeXSHead = "m'"  , PhonemeXSTail = "a" , PhonemeXSN = "m'" },
-            new jpcommonMora { moraValue = "ミェ", PhonemeHead = "my", PhonemeTail = "e", PhonemeXSHead = "m'"  , PhonemeXSTail = "e" , PhonemeXSN = "m'" },
-            new jpcommonMora { moraValue = "ミ"  , PhonemeHead = "m" , PhonemeTail = "i", PhonemeXSHead = "m'"  , PhonemeXSTail = "i" , PhonemeXSN = "m'" },
-            new jpcommonMora { moraValue = "マ"  , PhonemeHead = "m" , PhonemeTail = "a", PhonemeXSHead = "m"   , PhonemeXSTail = "a" , PhonemeXSN = "m" },
-            new jpcommonMora { moraValue = "ポ"  , PhonemeHead = "p" , PhonemeTail = "o", PhonemeXSHead = "p"   , PhonemeXSTail = "o" , PhonemeXSN = "m" },
-            new jpcommonMora { moraValue = "ボ"  , PhonemeHead = "b" , PhonemeTail = "o", PhonemeXSHead = "b"   , PhonemeXSTail = "o" , PhonemeXSN = "m" },
-            new jpcommonMora { moraValue = "ホ"  , PhonemeHead = "h" , PhonemeTail = "o", PhonemeXSHead = "h"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ペ"  , PhonemeHead = "p" , PhonemeTail = "e", PhonemeXSHead = "p"   , PhonemeXSTail = "e" , PhonemeXSN = "m" },
-            new jpcommonMora { moraValue = "ベ"  , PhonemeHead = "b" , PhonemeTail = "e", PhonemeXSHead = "b"   , PhonemeXSTail = "e" , PhonemeXSN = "m" },
-            new jpcommonMora { moraValue = "ヘ"  , PhonemeHead = "h" , PhonemeTail = "e", PhonemeXSHead = "h"   , PhonemeXSTail = "e" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "プ"  , PhonemeHead = "p" , PhonemeTail = "u", PhonemeXSHead = "p"   , PhonemeXSTail = "M" , PhonemeXSN = "m" },
-            new jpcommonMora { moraValue = "ブ"  , PhonemeHead = "b" , PhonemeTail = "u", PhonemeXSHead = "b"   , PhonemeXSTail = "M" , PhonemeXSN = "m" },
-            new jpcommonMora { moraValue = "フォ", PhonemeHead = "f" , PhonemeTail = "o", PhonemeXSHead = "p\\" , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "フェ", PhonemeHead = "f" , PhonemeTail = "e", PhonemeXSHead = "p\\" , PhonemeXSTail = "e" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "フィ", PhonemeHead = "f" , PhonemeTail = "i", PhonemeXSHead = "p\\'", PhonemeXSTail = "i" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ファ", PhonemeHead = "f" , PhonemeTail = "a", PhonemeXSHead = "p\\" , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "フ"  , PhonemeHead = "f" , PhonemeTail = "u", PhonemeXSHead = "p'"  , PhonemeXSTail = "M" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ピョ", PhonemeHead = "py", PhonemeTail = "o", PhonemeXSHead = "p'"  , PhonemeXSTail = "o" , PhonemeXSN = "m'" },
-            new jpcommonMora { moraValue = "ピュ", PhonemeHead = "py", PhonemeTail = "u", PhonemeXSHead = "p'"  , PhonemeXSTail = "M" , PhonemeXSN = "m'" },
-            new jpcommonMora { moraValue = "ピャ", PhonemeHead = "py", PhonemeTail = "a", PhonemeXSHead = "p'"  , PhonemeXSTail = "a" , PhonemeXSN = "m'" },
-            new jpcommonMora { moraValue = "ピェ", PhonemeHead = "py", PhonemeTail = "e", PhonemeXSHead = "p'"  , PhonemeXSTail = "e" , PhonemeXSN = "m'" },
-            new jpcommonMora { moraValue = "ピ"  , PhonemeHead = "p" , PhonemeTail = "i", PhonemeXSHead = "p'"  , PhonemeXSTail = "i" , PhonemeXSN = "m'" },
-            new jpcommonMora { moraValue = "ビョ", PhonemeHead = "by", PhonemeTail = "o", PhonemeXSHead = "b'"  , PhonemeXSTail = "o" , PhonemeXSN = "m'" },
-            new jpcommonMora { moraValue = "ビュ", PhonemeHead = "by", PhonemeTail = "u", PhonemeXSHead = "b'"  , PhonemeXSTail = "M" , PhonemeXSN = "m'" },
-            new jpcommonMora { moraValue = "ビャ", PhonemeHead = "by", PhonemeTail = "a", PhonemeXSHead = "b'"  , PhonemeXSTail = "a" , PhonemeXSN = "m'" },
-            new jpcommonMora { moraValue = "ビェ", PhonemeHead = "by", PhonemeTail = "e", PhonemeXSHead = "b'"  , PhonemeXSTail = "e" , PhonemeXSN = "m'" },
-            new jpcommonMora { moraValue = "ビ"  , PhonemeHead = "b" , PhonemeTail = "i", PhonemeXSHead = "b'"  , PhonemeXSTail = "i" , PhonemeXSN = "m'" },
-            new jpcommonMora { moraValue = "ヒョ", PhonemeHead = "hy", PhonemeTail = "o", PhonemeXSHead = "C"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ヒュ", PhonemeHead = "hy", PhonemeTail = "u", PhonemeXSHead = "C"   , PhonemeXSTail = "M" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ヒャ", PhonemeHead = "hy", PhonemeTail = "a", PhonemeXSHead = "C"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ヒェ", PhonemeHead = "hy", PhonemeTail = "e", PhonemeXSHead = "C"   , PhonemeXSTail = "e" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ヒ"  , PhonemeHead = "h" , PhonemeTail = "i", PhonemeXSHead = "C"   , PhonemeXSTail = "i" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "パ"  , PhonemeHead = "p" , PhonemeTail = "a", PhonemeXSHead = "p"   , PhonemeXSTail = "a" , PhonemeXSN = "m" },
-            new jpcommonMora { moraValue = "バ"  , PhonemeHead = "b" , PhonemeTail = "a", PhonemeXSHead = "b"   , PhonemeXSTail = "a" , PhonemeXSN = "m" },
-            new jpcommonMora { moraValue = "ハ"  , PhonemeHead = "h" , PhonemeTail = "a", PhonemeXSHead = "h"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ノ"  , PhonemeHead = "n" , PhonemeTail = "o", PhonemeXSHead = "n"   , PhonemeXSTail = "o" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ネ"  , PhonemeHead = "n" , PhonemeTail = "e", PhonemeXSHead = "n"   , PhonemeXSTail = "e" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ヌ"  , PhonemeHead = "n" , PhonemeTail = "u", PhonemeXSHead = "n"   , PhonemeXSTail = "M" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ニョ", PhonemeHead = "ny", PhonemeTail = "o", PhonemeXSHead = "J"   , PhonemeXSTail = "o" , PhonemeXSN = "J" },
-            new jpcommonMora { moraValue = "ニュ", PhonemeHead = "ny", PhonemeTail = "u", PhonemeXSHead = "J"   , PhonemeXSTail = "M" , PhonemeXSN = "J" },
-            new jpcommonMora { moraValue = "ニャ", PhonemeHead = "ny", PhonemeTail = "a", PhonemeXSHead = "J"   , PhonemeXSTail = "a" , PhonemeXSN = "J" },
-            new jpcommonMora { moraValue = "ニェ", PhonemeHead = "ny", PhonemeTail = "e", PhonemeXSHead = "J"   , PhonemeXSTail = "e" , PhonemeXSN = "J" },
-            new jpcommonMora { moraValue = "ニ"  , PhonemeHead = "n" , PhonemeTail = "i", PhonemeXSHead = "J"   , PhonemeXSTail = "i" , PhonemeXSN = "J" },
-            new jpcommonMora { moraValue = "ナ"  , PhonemeHead = "n" , PhonemeTail = "a", PhonemeXSHead = "n"   , PhonemeXSTail = "a" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ドゥ", PhonemeHead = "d" , PhonemeTail = "u", PhonemeXSHead = "d"   , PhonemeXSTail = "M" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ド"  , PhonemeHead = "d" , PhonemeTail = "o", PhonemeXSHead = "d"   , PhonemeXSTail = "o" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "トゥ", PhonemeHead = "t" , PhonemeTail = "u", PhonemeXSHead = "t"   , PhonemeXSTail = "M" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ト"  , PhonemeHead = "t" , PhonemeTail = "o", PhonemeXSHead = "t"   , PhonemeXSTail = "o" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "デョ", PhonemeHead = "dy", PhonemeTail = "o", PhonemeXSHead = "d'"  , PhonemeXSTail = "o" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "デュ", PhonemeHead = "dy", PhonemeTail = "u", PhonemeXSHead = "d'"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "デャ", PhonemeHead = "dy", PhonemeTail = "a", PhonemeXSHead = "d'"  , PhonemeXSTail = "a" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ディ", PhonemeHead = "d" , PhonemeTail = "i", PhonemeXSHead = "d'"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "デ"  , PhonemeHead = "d" , PhonemeTail = "e", PhonemeXSHead = "d"   , PhonemeXSTail = "e" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "テョ", PhonemeHead = "ty", PhonemeTail = "o", PhonemeXSHead = "t'"  , PhonemeXSTail = "o" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "テュ", PhonemeHead = "ty", PhonemeTail = "u", PhonemeXSHead = "t'"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "テャ", PhonemeHead = "ty", PhonemeTail = "a", PhonemeXSHead = "t'"  , PhonemeXSTail = "a" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ティ", PhonemeHead = "t" , PhonemeTail = "i", PhonemeXSHead = "t'"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "テ"  , PhonemeHead = "t" , PhonemeTail = "e", PhonemeXSHead = "t"   , PhonemeXSTail = "e" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ヅ"  , PhonemeHead = "z" , PhonemeTail = "u", PhonemeXSHead = "dz"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ツォ", PhonemeHead = "ts", PhonemeTail = "o", PhonemeXSHead = "ts"  , PhonemeXSTail = "o" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ツェ", PhonemeHead = "ts", PhonemeTail = "e", PhonemeXSHead = "ts"  , PhonemeXSTail = "e" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ツィ", PhonemeHead = "ts", PhonemeTail = "i", PhonemeXSHead = "ts"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ツァ", PhonemeHead = "ts", PhonemeTail = "a", PhonemeXSHead = "ts"  , PhonemeXSTail = "a" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ツ"  , PhonemeHead = "ts", PhonemeTail = "u", PhonemeXSHead = "ts"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ッ"  , PhonemeHead = "cl", PhonemeTail = "" , PhonemeXSHead = "sil" , PhonemeXSTail = ""  , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ヂ"  , PhonemeHead = "j" , PhonemeTail = "i", PhonemeXSHead = "dZ"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "チョ", PhonemeHead = "ch", PhonemeTail = "o", PhonemeXSHead = "tS"  , PhonemeXSTail = "o" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "チュ", PhonemeHead = "ch", PhonemeTail = "u", PhonemeXSHead = "tS"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "チャ", PhonemeHead = "ch", PhonemeTail = "a", PhonemeXSHead = "tS"  , PhonemeXSTail = "a" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "チェ", PhonemeHead = "ch", PhonemeTail = "e", PhonemeXSHead = "tS"  , PhonemeXSTail = "e" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "チ"  , PhonemeHead = "ch", PhonemeTail = "i", PhonemeXSHead = "tS"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ダ"  , PhonemeHead = "d" , PhonemeTail = "a", PhonemeXSHead = "d"   , PhonemeXSTail = "a" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "タ"  , PhonemeHead = "t" , PhonemeTail = "a", PhonemeXSHead = "t"   , PhonemeXSTail = "a" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ゾ"  , PhonemeHead = "z" , PhonemeTail = "o", PhonemeXSHead = "dz"  , PhonemeXSTail = "o" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ソ"  , PhonemeHead = "s" , PhonemeTail = "o", PhonemeXSHead = "s"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ゼ"  , PhonemeHead = "z" , PhonemeTail = "e", PhonemeXSHead = "dz"  , PhonemeXSTail = "e" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "セ"  , PhonemeHead = "s" , PhonemeTail = "e", PhonemeXSHead = "s"   , PhonemeXSTail = "e" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ズィ", PhonemeHead = "z" , PhonemeTail = "i", PhonemeXSHead = "dz"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ズ"  , PhonemeHead = "z" , PhonemeTail = "u", PhonemeXSHead = "dz"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "スィ", PhonemeHead = "s" , PhonemeTail = "i", PhonemeXSHead = "s"   , PhonemeXSTail = "i" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ス"  , PhonemeHead = "s" , PhonemeTail = "u", PhonemeXSHead = "s"   , PhonemeXSTail = "M" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ジョ", PhonemeHead = "j" , PhonemeTail = "o", PhonemeXSHead = "dZ"  , PhonemeXSTail = "o" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ジュ", PhonemeHead = "j" , PhonemeTail = "u", PhonemeXSHead = "dZ"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ジャ", PhonemeHead = "j" , PhonemeTail = "a", PhonemeXSHead = "dZ"  , PhonemeXSTail = "a" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ジェ", PhonemeHead = "j" , PhonemeTail = "e", PhonemeXSHead = "dZ"  , PhonemeXSTail = "e" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ジ"  , PhonemeHead = "j" , PhonemeTail = "i", PhonemeXSHead = "dZ"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ショ", PhonemeHead = "sh", PhonemeTail = "o", PhonemeXSHead = "S"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "シュ", PhonemeHead = "sh", PhonemeTail = "u", PhonemeXSHead = "S"   , PhonemeXSTail = "M" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "シャ", PhonemeHead = "sh", PhonemeTail = "a", PhonemeXSHead = "S"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "シェ", PhonemeHead = "sh", PhonemeTail = "e", PhonemeXSHead = "S"   , PhonemeXSTail = "e" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "シ"  , PhonemeHead = "sh", PhonemeTail = "i", PhonemeXSHead = "S"   , PhonemeXSTail = "i" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ザ"  , PhonemeHead = "z" , PhonemeTail = "a", PhonemeXSHead = "dz"  , PhonemeXSTail = "a" , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "サ"  , PhonemeHead = "s" , PhonemeTail = "a", PhonemeXSHead = "s"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ゴ"  , PhonemeHead = "g" , PhonemeTail = "o", PhonemeXSHead = "g"   , PhonemeXSTail = "o" , PhonemeXSN = "N" },
-            new jpcommonMora { moraValue = "コ"  , PhonemeHead = "k" , PhonemeTail = "o", PhonemeXSHead = "k"   , PhonemeXSTail = "o" , PhonemeXSN = "N" },
-            new jpcommonMora { moraValue = "ゲ"  , PhonemeHead = "g" , PhonemeTail = "e", PhonemeXSHead = "g"   , PhonemeXSTail = "e" , PhonemeXSN = "N" },
-            new jpcommonMora { moraValue = "ケ"  , PhonemeHead = "k" , PhonemeTail = "e", PhonemeXSHead = "k"   , PhonemeXSTail = "e" , PhonemeXSN = "N" },
-            new jpcommonMora { moraValue = "ヶ"  , PhonemeHead = "k" , PhonemeTail = "e", PhonemeXSHead = "k"   , PhonemeXSTail = "e" , PhonemeXSN = "N" },
-            new jpcommonMora { moraValue = "グヮ", PhonemeHead = "gw", PhonemeTail = "a", PhonemeXSHead = "g w" , PhonemeXSTail = "a" , PhonemeXSN = "N" },
-            new jpcommonMora { moraValue = "グ"  , PhonemeHead = "g" , PhonemeTail = "u", PhonemeXSHead = "g"   , PhonemeXSTail = "M" , PhonemeXSN = "N" },
-            new jpcommonMora { moraValue = "クヮ", PhonemeHead = "kw", PhonemeTail = "a", PhonemeXSHead = "k w" , PhonemeXSTail = "a" , PhonemeXSN = "N" },
-            new jpcommonMora { moraValue = "ク"  , PhonemeHead = "k" , PhonemeTail = "u", PhonemeXSHead = "k"   , PhonemeXSTail = "M" , PhonemeXSN = "N" },
-            new jpcommonMora { moraValue = "ギョ", PhonemeHead = "gy", PhonemeTail = "o", PhonemeXSHead = "g'"  , PhonemeXSTail = "o" , PhonemeXSN = "N'" },
-            new jpcommonMora { moraValue = "ギュ", PhonemeHead = "gy", PhonemeTail = "u", PhonemeXSHead = "g'"  , PhonemeXSTail = "M" , PhonemeXSN = "N'" },
-            new jpcommonMora { moraValue = "ギャ", PhonemeHead = "gy", PhonemeTail = "a", PhonemeXSHead = "g'"  , PhonemeXSTail = "a" , PhonemeXSN = "N'" },
-            new jpcommonMora { moraValue = "ギェ", PhonemeHead = "gy", PhonemeTail = "e", PhonemeXSHead = "g'"  , PhonemeXSTail = "e" , PhonemeXSN = "N'" },
-            new jpcommonMora { moraValue = "ギ"  , PhonemeHead = "g" , PhonemeTail = "i", PhonemeXSHead = "g'"  , PhonemeXSTail = "i" , PhonemeXSN = "N'" },
-            new jpcommonMora { moraValue = "キョ", PhonemeHead = "ky", PhonemeTail = "o", PhonemeXSHead = "k'"  , PhonemeXSTail = "o" , PhonemeXSN = "N'" },
-            new jpcommonMora { moraValue = "キュ", PhonemeHead = "ky", PhonemeTail = "u", PhonemeXSHead = "k'"  , PhonemeXSTail = "M" , PhonemeXSN = "N'" },
-            new jpcommonMora { moraValue = "キャ", PhonemeHead = "ky", PhonemeTail = "a", PhonemeXSHead = "k'"  , PhonemeXSTail = "a" , PhonemeXSN = "N'" },
-            new jpcommonMora { moraValue = "キェ", PhonemeHead = "ky", PhonemeTail = "e", PhonemeXSHead = "k'"  , PhonemeXSTail = "e" , PhonemeXSN = "N'" },
-            new jpcommonMora { moraValue = "キ"  , PhonemeHead = "k" , PhonemeTail = "i", PhonemeXSHead = "k'"  , PhonemeXSTail = "i" , PhonemeXSN = "N'" },
-            new jpcommonMora { moraValue = "ガ"  , PhonemeHead = "g" , PhonemeTail = "a", PhonemeXSHead = "g"   , PhonemeXSTail = "a" , PhonemeXSN = "N" },
-            new jpcommonMora { moraValue = "カ"  , PhonemeHead = "k" , PhonemeTail = "a", PhonemeXSHead = "k"   , PhonemeXSTail = "a" , PhonemeXSN = "N" },
-            new jpcommonMora { moraValue = "オ"  , PhonemeHead = "o" , PhonemeTail = "" , PhonemeXSHead = "o"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ォ"  , PhonemeHead = "o" , PhonemeTail = "" , PhonemeXSHead = "o"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "エ"  , PhonemeHead = "e" , PhonemeTail = "" , PhonemeXSHead = "e"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ェ"  , PhonemeHead = "e" , PhonemeTail = "" , PhonemeXSHead = "e"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ウォ", PhonemeHead = "w" , PhonemeTail = "o", PhonemeXSHead = "w"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ウェ", PhonemeHead = "w" , PhonemeTail = "e", PhonemeXSHead = "w"   , PhonemeXSTail = "e" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ウィ", PhonemeHead = "w" , PhonemeTail = "i", PhonemeXSHead = "w"   , PhonemeXSTail = "i" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ウ"  , PhonemeHead = "u" , PhonemeTail = "" , PhonemeXSHead = "M"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ゥ"  , PhonemeHead = "u" , PhonemeTail = "" , PhonemeXSHead = "M"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "イェ", PhonemeHead = "y" , PhonemeTail = "e", PhonemeXSHead = "j"   , PhonemeXSTail = "e" , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "イ"  , PhonemeHead = "i" , PhonemeTail = "" , PhonemeXSHead = "i"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ィ"  , PhonemeHead = "i" , PhonemeTail = "" , PhonemeXSHead = "i"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ア"  , PhonemeHead = "a" , PhonemeTail = "" , PhonemeXSHead = "a"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ァ"  , PhonemeHead = "a" , PhonemeTail = "" , PhonemeXSHead = "a"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ー"  , PhonemeHead = "a" , PhonemeTail = "" , PhonemeXSHead = "-"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ー"  , PhonemeHead = "i" , PhonemeTail = "" , PhonemeXSHead = "-"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ー"  , PhonemeHead = "u" , PhonemeTail = "" , PhonemeXSHead = "-"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ー"  , PhonemeHead = "e" , PhonemeTail = "" , PhonemeXSHead = "-"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = "ー"  , PhonemeHead = "o" , PhonemeTail = "" , PhonemeXSHead = "-"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
-            new jpcommonMora { moraValue = ""    , PhonemeHead = ""  , PhonemeTail = "" , PhonemeXSHead = ""    , PhonemeXSTail = ""  , PhonemeXSN = "" }
-        };
-
-        /// <summary>
-        /// モーラの文字と音素から発音記号（X-SAMPA）を求める
-        /// </summary>
-        /// <param name="moraValue">モーラの文字</param>
-        /// <param name="Phoneme">現在の音素</param>
-        /// <param name="nextPhonemeValue">次の音素</param>
-        /// <returns>発音記号</returns>
+            new jpcommonMora { moraValue = "ヴョ", LyricVSQX = "ヴョ", PhonemeHead = "by", PhonemeTail = "o", PhonemeXSHead = "b"   , PhonemeXSTail = "o" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ヴュ", LyricVSQX = "ヴュ", PhonemeHead = "by", PhonemeTail = "u", PhonemeXSHead = "b"   , PhonemeXSTail = "M" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ヴャ", LyricVSQX = "ヴャ", PhonemeHead = "by", PhonemeTail = "a", PhonemeXSHead = "b"   , PhonemeXSTail = "M" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ヴォ", LyricVSQX = "ヴォ", PhonemeHead = "v" , PhonemeTail = "o", PhonemeXSHead = "b"   , PhonemeXSTail = "o" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ヴェ", LyricVSQX = "ヴェ", PhonemeHead = "v" , PhonemeTail = "e", PhonemeXSHead = "b"   , PhonemeXSTail = "e" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ヴィ", LyricVSQX = "ヴィ", PhonemeHead = "v" , PhonemeTail = "i", PhonemeXSHead = "b"   , PhonemeXSTail = "i" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ヴァ", LyricVSQX = "ヴァ", PhonemeHead = "v" , PhonemeTail = "a", PhonemeXSHead = "b"   , PhonemeXSTail = "a" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ヴ"  , LyricVSQX = "ヴ",   PhonemeHead = "v" , PhonemeTail = "u", PhonemeXSHead = "b"   , PhonemeXSTail = "M" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ン"  , LyricVSQX = "ん",   PhonemeHead = "N" , PhonemeTail = "" , PhonemeXSHead = "N\\" , PhonemeXSTail = ""  , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ヲ"  , LyricVSQX = "うぉ", PhonemeHead = "o" , PhonemeTail = "" , PhonemeXSHead = "o"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ヱ"  , LyricVSQX = "ゑ",   PhonemeHead = "e" , PhonemeTail = "" , PhonemeXSHead = "w e" , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ヰ"  , LyricVSQX = "ゐ",   PhonemeHead = "i" , PhonemeTail = "" , PhonemeXSHead = "w i" , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ワ"  , LyricVSQX = "わ",   PhonemeHead = "w" , PhonemeTail = "a", PhonemeXSHead = "w"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ヮ"  , LyricVSQX = "ゎ",   PhonemeHead = "w" , PhonemeTail = "a", PhonemeXSHead = "w"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ロ"  , LyricVSQX = "ろ",   PhonemeHead = "r" , PhonemeTail = "o", PhonemeXSHead = "4"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "レ"  , LyricVSQX = "れ",   PhonemeHead = "r" , PhonemeTail = "e", PhonemeXSHead = "4"   , PhonemeXSTail = "e" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ル"  , LyricVSQX = "る",   PhonemeHead = "r" , PhonemeTail = "u", PhonemeXSHead = "4"   , PhonemeXSTail = "M" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "リョ", LyricVSQX = "りょ", PhonemeHead = "ry", PhonemeTail = "o", PhonemeXSHead = "4'"  , PhonemeXSTail = "o" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "リュ", LyricVSQX = "りゅ", PhonemeHead = "ry", PhonemeTail = "u", PhonemeXSHead = "4'"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "リャ", LyricVSQX = "りゃ", PhonemeHead = "ry", PhonemeTail = "a", PhonemeXSHead = "4'"  , PhonemeXSTail = "a" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "リェ", LyricVSQX = "りぇ", PhonemeHead = "ry", PhonemeTail = "e", PhonemeXSHead = "4'"  , PhonemeXSTail = "e" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "リ"  , LyricVSQX = "り",   PhonemeHead = "r" , PhonemeTail = "i", PhonemeXSHead = "4'"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ラ"  , LyricVSQX = "ら",   PhonemeHead = "r" , PhonemeTail = "a", PhonemeXSHead = "4"   , PhonemeXSTail = "a" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ヨ"  , LyricVSQX = "よ",   PhonemeHead = "y" , PhonemeTail = "o", PhonemeXSHead = "j"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ョ"  , LyricVSQX = "ょ",   PhonemeHead = "y" , PhonemeTail = "o", PhonemeXSHead = "j"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ユ"  , LyricVSQX = "ゆ",   PhonemeHead = "y" , PhonemeTail = "u", PhonemeXSHead = "j"   , PhonemeXSTail = "M" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ュ"  , LyricVSQX = "ゅ",   PhonemeHead = "y" , PhonemeTail = "u", PhonemeXSHead = "j"   , PhonemeXSTail = "M" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ヤ"  , LyricVSQX = "や",   PhonemeHead = "y" , PhonemeTail = "a", PhonemeXSHead = "j"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ャ"  , LyricVSQX = "ゃ",   PhonemeHead = "y" , PhonemeTail = "a", PhonemeXSHead = "j"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "モ"  , LyricVSQX = "も",   PhonemeHead = "m" , PhonemeTail = "o", PhonemeXSHead = "m"   , PhonemeXSTail = "o" , PhonemeXSN = "m" },
+            new jpcommonMora { moraValue = "メ"  , LyricVSQX = "め",   PhonemeHead = "m" , PhonemeTail = "e", PhonemeXSHead = "m"   , PhonemeXSTail = "e" , PhonemeXSN = "m" },
+            new jpcommonMora { moraValue = "ム"  , LyricVSQX = "む",   PhonemeHead = "m" , PhonemeTail = "u", PhonemeXSHead = "m"   , PhonemeXSTail = "M" , PhonemeXSN = "m" },
+            new jpcommonMora { moraValue = "ミョ", LyricVSQX = "みょ", PhonemeHead = "my", PhonemeTail = "o", PhonemeXSHead = "m'"  , PhonemeXSTail = "o" , PhonemeXSN = "m'" },
+            new jpcommonMora { moraValue = "ミュ", LyricVSQX = "みゅ", PhonemeHead = "my", PhonemeTail = "u", PhonemeXSHead = "m'"  , PhonemeXSTail = "M" , PhonemeXSN = "m'" },
+            new jpcommonMora { moraValue = "ミェ", LyricVSQX = "みぇ", PhonemeHead = "my", PhonemeTail = "e", PhonemeXSHead = "m'"  , PhonemeXSTail = "e" , PhonemeXSN = "m'" },
+            new jpcommonMora { moraValue = "ミャ", LyricVSQX = "みゃ", PhonemeHead = "my", PhonemeTail = "a", PhonemeXSHead = "m'"  , PhonemeXSTail = "a" , PhonemeXSN = "m'" },
+            new jpcommonMora { moraValue = "ミ"  , LyricVSQX = "み",   PhonemeHead = "m" , PhonemeTail = "i", PhonemeXSHead = "m'"  , PhonemeXSTail = "i" , PhonemeXSN = "m'" },
+            new jpcommonMora { moraValue = "マ"  , LyricVSQX = "ま",   PhonemeHead = "m" , PhonemeTail = "a", PhonemeXSHead = "m"   , PhonemeXSTail = "a" , PhonemeXSN = "m" },
+            new jpcommonMora { moraValue = "ポ"  , LyricVSQX = "ぽ",   PhonemeHead = "p" , PhonemeTail = "o", PhonemeXSHead = "p"   , PhonemeXSTail = "o" , PhonemeXSN = "m" },
+            new jpcommonMora { moraValue = "ボ"  , LyricVSQX = "ぼ",   PhonemeHead = "b" , PhonemeTail = "o", PhonemeXSHead = "b"   , PhonemeXSTail = "o" , PhonemeXSN = "m" },
+            new jpcommonMora { moraValue = "ホ"  , LyricVSQX = "ほ",   PhonemeHead = "h" , PhonemeTail = "o", PhonemeXSHead = "h"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ペ"  , LyricVSQX = "ぺ",   PhonemeHead = "p" , PhonemeTail = "e", PhonemeXSHead = "p"   , PhonemeXSTail = "e" , PhonemeXSN = "m" },
+            new jpcommonMora { moraValue = "ベ"  , LyricVSQX = "べ",   PhonemeHead = "b" , PhonemeTail = "e", PhonemeXSHead = "b"   , PhonemeXSTail = "e" , PhonemeXSN = "m" },
+            new jpcommonMora { moraValue = "ヘ"  , LyricVSQX = "へ",   PhonemeHead = "h" , PhonemeTail = "e", PhonemeXSHead = "h"   , PhonemeXSTail = "e" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "プ"  , LyricVSQX = "ぷ",   PhonemeHead = "p" , PhonemeTail = "u", PhonemeXSHead = "p"   , PhonemeXSTail = "M" , PhonemeXSN = "m" },
+            new jpcommonMora { moraValue = "ブ"  , LyricVSQX = "ぶ",   PhonemeHead = "b" , PhonemeTail = "u", PhonemeXSHead = "b"   , PhonemeXSTail = "M" , PhonemeXSN = "m" },
+            new jpcommonMora { moraValue = "フォ", LyricVSQX = "ふぉ", PhonemeHead = "f" , PhonemeTail = "o", PhonemeXSHead = "p\\" , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "フェ", LyricVSQX = "ふぇ", PhonemeHead = "f" , PhonemeTail = "e", PhonemeXSHead = "p\\" , PhonemeXSTail = "e" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "フィ", LyricVSQX = "ふぃ", PhonemeHead = "f" , PhonemeTail = "i", PhonemeXSHead = "p\\'", PhonemeXSTail = "i" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ファ", LyricVSQX = "ふぁ", PhonemeHead = "f" , PhonemeTail = "a", PhonemeXSHead = "p\\" , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "フ"  , LyricVSQX = "ふ",   PhonemeHead = "f" , PhonemeTail = "u", PhonemeXSHead = "p'"  , PhonemeXSTail = "M" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ピョ", LyricVSQX = "ぴょ", PhonemeHead = "py", PhonemeTail = "o", PhonemeXSHead = "p'"  , PhonemeXSTail = "o" , PhonemeXSN = "m'" },
+            new jpcommonMora { moraValue = "ピュ", LyricVSQX = "ぴゅ", PhonemeHead = "py", PhonemeTail = "u", PhonemeXSHead = "p'"  , PhonemeXSTail = "M" , PhonemeXSN = "m'" },
+            new jpcommonMora { moraValue = "ピャ", LyricVSQX = "ぴゃ", PhonemeHead = "py", PhonemeTail = "a", PhonemeXSHead = "p'"  , PhonemeXSTail = "a" , PhonemeXSN = "m'" },
+            new jpcommonMora { moraValue = "ピェ", LyricVSQX = "ぴぇ", PhonemeHead = "py", PhonemeTail = "e", PhonemeXSHead = "p'"  , PhonemeXSTail = "e" , PhonemeXSN = "m'" },
+            new jpcommonMora { moraValue = "ピ"  , LyricVSQX = "ぴ",   PhonemeHead = "p" , PhonemeTail = "i", PhonemeXSHead = "p'"  , PhonemeXSTail = "i" , PhonemeXSN = "m'" },
+            new jpcommonMora { moraValue = "ビョ", LyricVSQX = "びょ", PhonemeHead = "by", PhonemeTail = "o", PhonemeXSHead = "b'"  , PhonemeXSTail = "o" , PhonemeXSN = "m'" },
+            new jpcommonMora { moraValue = "ビュ", LyricVSQX = "びゅ", PhonemeHead = "by", PhonemeTail = "u", PhonemeXSHead = "b'"  , PhonemeXSTail = "M" , PhonemeXSN = "m'" },
+            new jpcommonMora { moraValue = "ビャ", LyricVSQX = "びゃ", PhonemeHead = "by", PhonemeTail = "a", PhonemeXSHead = "b'"  , PhonemeXSTail = "a" , PhonemeXSN = "m'" },
+            new jpcommonMora { moraValue = "ビェ", LyricVSQX = "びぇ", PhonemeHead = "by", PhonemeTail = "e", PhonemeXSHead = "b'"  , PhonemeXSTail = "e" , PhonemeXSN = "m'" },
+            new jpcommonMora { moraValue = "ビ"  , LyricVSQX = "び",   PhonemeHead = "b" , PhonemeTail = "i", PhonemeXSHead = "b'"  , PhonemeXSTail = "i" , PhonemeXSN = "m'" },
+            new jpcommonMora { moraValue = "ヒョ", LyricVSQX = "ひょ", PhonemeHead = "hy", PhonemeTail = "o", PhonemeXSHead = "C"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ヒュ", LyricVSQX = "ひゅ", PhonemeHead = "hy", PhonemeTail = "u", PhonemeXSHead = "C"   , PhonemeXSTail = "M" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ヒャ", LyricVSQX = "ひゃ", PhonemeHead = "hy", PhonemeTail = "a", PhonemeXSHead = "C"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ヒェ", LyricVSQX = "ひぇ", PhonemeHead = "hy", PhonemeTail = "e", PhonemeXSHead = "C"   , PhonemeXSTail = "e" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ヒ"  , LyricVSQX = "ひ",   PhonemeHead = "h" , PhonemeTail = "i", PhonemeXSHead = "C"   , PhonemeXSTail = "i" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "パ"  , LyricVSQX = "ぱ",   PhonemeHead = "p" , PhonemeTail = "a", PhonemeXSHead = "p"   , PhonemeXSTail = "a" , PhonemeXSN = "m" },
+            new jpcommonMora { moraValue = "バ"  , LyricVSQX = "ぱ",   PhonemeHead = "b" , PhonemeTail = "a", PhonemeXSHead = "b"   , PhonemeXSTail = "a" , PhonemeXSN = "m" },
+            new jpcommonMora { moraValue = "ハ"  , LyricVSQX = "は",   PhonemeHead = "h" , PhonemeTail = "a", PhonemeXSHead = "h"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ノ"  , LyricVSQX = "の",   PhonemeHead = "n" , PhonemeTail = "o", PhonemeXSHead = "n"   , PhonemeXSTail = "o" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ネ"  , LyricVSQX = "ね",   PhonemeHead = "n" , PhonemeTail = "e", PhonemeXSHead = "n"   , PhonemeXSTail = "e" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ヌ"  , LyricVSQX = "ぬ",   PhonemeHead = "n" , PhonemeTail = "u", PhonemeXSHead = "n"   , PhonemeXSTail = "M" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ニョ", LyricVSQX = "にょ", PhonemeHead = "ny", PhonemeTail = "o", PhonemeXSHead = "J"   , PhonemeXSTail = "o" , PhonemeXSN = "J" },
+            new jpcommonMora { moraValue = "ニュ", LyricVSQX = "にゅ", PhonemeHead = "ny", PhonemeTail = "u", PhonemeXSHead = "J"   , PhonemeXSTail = "M" , PhonemeXSN = "J" },
+            new jpcommonMora { moraValue = "ニャ", LyricVSQX = "にゃ", PhonemeHead = "ny", PhonemeTail = "a", PhonemeXSHead = "J"   , PhonemeXSTail = "a" , PhonemeXSN = "J" },
+            new jpcommonMora { moraValue = "ニェ", LyricVSQX = "にぇ", PhonemeHead = "ny", PhonemeTail = "e", PhonemeXSHead = "J"   , PhonemeXSTail = "e" , PhonemeXSN = "J" },
+            new jpcommonMora { moraValue = "ニ"  , LyricVSQX = "に",   PhonemeHead = "n" , PhonemeTail = "i", PhonemeXSHead = "J"   , PhonemeXSTail = "i" , PhonemeXSN = "J" },
+            new jpcommonMora { moraValue = "ナ"  , LyricVSQX = "な",   PhonemeHead = "n" , PhonemeTail = "a", PhonemeXSHead = "n"   , PhonemeXSTail = "a" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ドゥ", LyricVSQX = "どぅ", PhonemeHead = "d" , PhonemeTail = "u", PhonemeXSHead = "d"   , PhonemeXSTail = "M" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ド"  , LyricVSQX = "ど",   PhonemeHead = "d" , PhonemeTail = "o", PhonemeXSHead = "d"   , PhonemeXSTail = "o" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "トゥ", LyricVSQX = "とぅ", PhonemeHead = "t" , PhonemeTail = "u", PhonemeXSHead = "t"   , PhonemeXSTail = "M" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ト"  , LyricVSQX = "と",   PhonemeHead = "t" , PhonemeTail = "o", PhonemeXSHead = "t"   , PhonemeXSTail = "o" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "デョ", LyricVSQX = "でょ", PhonemeHead = "dy", PhonemeTail = "o", PhonemeXSHead = "d'"  , PhonemeXSTail = "o" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "デュ", LyricVSQX = "でゅ", PhonemeHead = "dy", PhonemeTail = "u", PhonemeXSHead = "d'"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "デャ", LyricVSQX = "でゃ", PhonemeHead = "dy", PhonemeTail = "a", PhonemeXSHead = "d'"  , PhonemeXSTail = "a" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ディ", LyricVSQX = "でぃ", PhonemeHead = "d" , PhonemeTail = "i", PhonemeXSHead = "d'"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "デ"  , LyricVSQX = "で",   PhonemeHead = "d" , PhonemeTail = "e", PhonemeXSHead = "d"   , PhonemeXSTail = "e" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "テョ", LyricVSQX = "てょ", PhonemeHead = "ty", PhonemeTail = "o", PhonemeXSHead = "t'"  , PhonemeXSTail = "o" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "テュ", LyricVSQX = "てゅ", PhonemeHead = "ty", PhonemeTail = "u", PhonemeXSHead = "t'"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "テャ", LyricVSQX = "てゃ", PhonemeHead = "ty", PhonemeTail = "a", PhonemeXSHead = "t'"  , PhonemeXSTail = "a" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ティ", LyricVSQX = "てぃ", PhonemeHead = "t" , PhonemeTail = "i", PhonemeXSHead = "t'"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "テ"  , LyricVSQX = "て",   PhonemeHead = "t" , PhonemeTail = "e", PhonemeXSHead = "t"   , PhonemeXSTail = "e" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ヅ"  , LyricVSQX = "づ",   PhonemeHead = "z" , PhonemeTail = "u", PhonemeXSHead = "dz"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ツォ", LyricVSQX = "つぉ", PhonemeHead = "ts", PhonemeTail = "o", PhonemeXSHead = "ts"  , PhonemeXSTail = "o" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ツェ", LyricVSQX = "つぇ", PhonemeHead = "ts", PhonemeTail = "e", PhonemeXSHead = "ts"  , PhonemeXSTail = "e" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ツィ", LyricVSQX = "つぃ", PhonemeHead = "ts", PhonemeTail = "i", PhonemeXSHead = "ts"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ツァ", LyricVSQX = "つぁ", PhonemeHead = "ts", PhonemeTail = "a", PhonemeXSHead = "ts"  , PhonemeXSTail = "a" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ツ"  , LyricVSQX = "つ",   PhonemeHead = "ts", PhonemeTail = "u", PhonemeXSHead = "ts"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ッ"  , LyricVSQX = "っ",   PhonemeHead = "cl", PhonemeTail = "" , PhonemeXSHead = "sil" , PhonemeXSTail = ""  , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ヂ"  , LyricVSQX = "ぢ",   PhonemeHead = "j" , PhonemeTail = "i", PhonemeXSHead = "dZ"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "チョ", LyricVSQX = "ちょ", PhonemeHead = "ch", PhonemeTail = "o", PhonemeXSHead = "tS"  , PhonemeXSTail = "o" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "チュ", LyricVSQX = "ちゅ", PhonemeHead = "ch", PhonemeTail = "u", PhonemeXSHead = "tS"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "チャ", LyricVSQX = "ちゃ", PhonemeHead = "ch", PhonemeTail = "a", PhonemeXSHead = "tS"  , PhonemeXSTail = "a" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "チェ", LyricVSQX = "ちぇ", PhonemeHead = "ch", PhonemeTail = "e", PhonemeXSHead = "tS"  , PhonemeXSTail = "e" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "チ"  , LyricVSQX = "ち",   PhonemeHead = "ch", PhonemeTail = "i", PhonemeXSHead = "tS"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ダ"  , LyricVSQX = "だ",   PhonemeHead = "d" , PhonemeTail = "a", PhonemeXSHead = "d"   , PhonemeXSTail = "a" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "タ"  , LyricVSQX = "た",   PhonemeHead = "t" , PhonemeTail = "a", PhonemeXSHead = "t"   , PhonemeXSTail = "a" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ゾ"  , LyricVSQX = "ぞ",   PhonemeHead = "z" , PhonemeTail = "o", PhonemeXSHead = "dz"  , PhonemeXSTail = "o" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ソ"  , LyricVSQX = "そ",   PhonemeHead = "s" , PhonemeTail = "o", PhonemeXSHead = "s"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ゼ"  , LyricVSQX = "ぜ",   PhonemeHead = "z" , PhonemeTail = "e", PhonemeXSHead = "dz"  , PhonemeXSTail = "e" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "セ"  , LyricVSQX = "せ",   PhonemeHead = "s" , PhonemeTail = "e", PhonemeXSHead = "s"   , PhonemeXSTail = "e" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ズィ", LyricVSQX = "ずぃ", PhonemeHead = "z" , PhonemeTail = "i", PhonemeXSHead = "dz"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ズ"  , LyricVSQX = "ず",   PhonemeHead = "z" , PhonemeTail = "u", PhonemeXSHead = "dz"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "スィ", LyricVSQX = "すぃ", PhonemeHead = "s" , PhonemeTail = "i", PhonemeXSHead = "s"   , PhonemeXSTail = "i" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ス"  , LyricVSQX = "す",   PhonemeHead = "s" , PhonemeTail = "u", PhonemeXSHead = "s"   , PhonemeXSTail = "M" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ジョ", LyricVSQX = "じょ", PhonemeHead = "j" , PhonemeTail = "o", PhonemeXSHead = "dZ"  , PhonemeXSTail = "o" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ジュ", LyricVSQX = "じゅ", PhonemeHead = "j" , PhonemeTail = "u", PhonemeXSHead = "dZ"  , PhonemeXSTail = "M" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ジャ", LyricVSQX = "じゃ", PhonemeHead = "j" , PhonemeTail = "a", PhonemeXSHead = "dZ"  , PhonemeXSTail = "a" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ジェ", LyricVSQX = "じぇ", PhonemeHead = "j" , PhonemeTail = "e", PhonemeXSHead = "dZ"  , PhonemeXSTail = "e" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ジ"  , LyricVSQX = "じ",   PhonemeHead = "j" , PhonemeTail = "i", PhonemeXSHead = "dZ"  , PhonemeXSTail = "i" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "ショ", LyricVSQX = "しょ", PhonemeHead = "sh", PhonemeTail = "o", PhonemeXSHead = "S"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "シュ", LyricVSQX = "しゅ", PhonemeHead = "sh", PhonemeTail = "u", PhonemeXSHead = "S"   , PhonemeXSTail = "M" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "シャ", LyricVSQX = "しゃ", PhonemeHead = "sh", PhonemeTail = "a", PhonemeXSHead = "S"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "シェ", LyricVSQX = "しぇ", PhonemeHead = "sh", PhonemeTail = "e", PhonemeXSHead = "S"   , PhonemeXSTail = "e" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "シ"  , LyricVSQX = "し",   PhonemeHead = "sh", PhonemeTail = "i", PhonemeXSHead = "S"   , PhonemeXSTail = "i" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ザ"  , LyricVSQX = "ざ",   PhonemeHead = "z" , PhonemeTail = "a", PhonemeXSHead = "dz"  , PhonemeXSTail = "a" , PhonemeXSN = "n" },
+            new jpcommonMora { moraValue = "サ"  , LyricVSQX = "さ",   PhonemeHead = "s" , PhonemeTail = "a", PhonemeXSHead = "s"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ゴ"  , LyricVSQX = "ご",   PhonemeHead = "g" , PhonemeTail = "o", PhonemeXSHead = "g"   , PhonemeXSTail = "o" , PhonemeXSN = "N" },
+            new jpcommonMora { moraValue = "コ"  , LyricVSQX = "こ",   PhonemeHead = "k" , PhonemeTail = "o", PhonemeXSHead = "k"   , PhonemeXSTail = "o" , PhonemeXSN = "N" },
+            new jpcommonMora { moraValue = "ゲ"  , LyricVSQX = "げ",   PhonemeHead = "g" , PhonemeTail = "e", PhonemeXSHead = "g"   , PhonemeXSTail = "e" , PhonemeXSN = "N" },
+            new jpcommonMora { moraValue = "ケ"  , LyricVSQX = "け",   PhonemeHead = "k" , PhonemeTail = "e", PhonemeXSHead = "k"   , PhonemeXSTail = "e" , PhonemeXSN = "N" },
+            new jpcommonMora { moraValue = "ヶ"  , LyricVSQX = "ヶ",   PhonemeHead = "k" , PhonemeTail = "e", PhonemeXSHead = "k"   , PhonemeXSTail = "e" , PhonemeXSN = "N" },
+            new jpcommonMora { moraValue = "グヮ", LyricVSQX = "グヮ", PhonemeHead = "gw", PhonemeTail = "a", PhonemeXSHead = "g w" , PhonemeXSTail = "a" , PhonemeXSN = "N" },
+            new jpcommonMora { moraValue = "グ"  , LyricVSQX = "ぐ",   PhonemeHead = "g" , PhonemeTail = "u", PhonemeXSHead = "g"   , PhonemeXSTail = "M" , PhonemeXSN = "N" },
+            new jpcommonMora { moraValue = "クヮ", LyricVSQX = "クヮ", PhonemeHead = "kw", PhonemeTail = "a", PhonemeXSHead = "k w" , PhonemeXSTail = "a" , PhonemeXSN = "N" },
+            new jpcommonMora { moraValue = "ク"  , LyricVSQX = "く",   PhonemeHead = "k" , PhonemeTail = "u", PhonemeXSHead = "k"   , PhonemeXSTail = "M" , PhonemeXSN = "N" },
+            new jpcommonMora { moraValue = "ギョ", LyricVSQX = "ぎょ", PhonemeHead = "gy", PhonemeTail = "o", PhonemeXSHead = "g'"  , PhonemeXSTail = "o" , PhonemeXSN = "N'" },
+            new jpcommonMora { moraValue = "ギュ", LyricVSQX = "ぎゅ", PhonemeHead = "gy", PhonemeTail = "u", PhonemeXSHead = "g'"  , PhonemeXSTail = "M" , PhonemeXSN = "N'" },
+            new jpcommonMora { moraValue = "ギャ", LyricVSQX = "ぎゃ", PhonemeHead = "gy", PhonemeTail = "a", PhonemeXSHead = "g'"  , PhonemeXSTail = "a" , PhonemeXSN = "N'" },
+            new jpcommonMora { moraValue = "ギェ", LyricVSQX = "ぎぇ", PhonemeHead = "gy", PhonemeTail = "e", PhonemeXSHead = "g'"  , PhonemeXSTail = "e" , PhonemeXSN = "N'" },
+            new jpcommonMora { moraValue = "ギ"  , LyricVSQX = "ぎ",   PhonemeHead = "g" , PhonemeTail = "i", PhonemeXSHead = "g'"  , PhonemeXSTail = "i" , PhonemeXSN = "N'" },
+            new jpcommonMora { moraValue = "キョ", LyricVSQX = "きょ", PhonemeHead = "ky", PhonemeTail = "o", PhonemeXSHead = "k'"  , PhonemeXSTail = "o" , PhonemeXSN = "N'" },
+            new jpcommonMora { moraValue = "キュ", LyricVSQX = "きゅ", PhonemeHead = "ky", PhonemeTail = "u", PhonemeXSHead = "k'"  , PhonemeXSTail = "M" , PhonemeXSN = "N'" },
+            new jpcommonMora { moraValue = "キャ", LyricVSQX = "きゃ", PhonemeHead = "ky", PhonemeTail = "a", PhonemeXSHead = "k'"  , PhonemeXSTail = "a" , PhonemeXSN = "N'" },
+            new jpcommonMora { moraValue = "キェ", LyricVSQX = "きぇ", PhonemeHead = "ky", PhonemeTail = "e", PhonemeXSHead = "k'"  , PhonemeXSTail = "e" , PhonemeXSN = "N'" },
+            new jpcommonMora { moraValue = "キ"  , LyricVSQX = "き",   PhonemeHead = "k" , PhonemeTail = "i", PhonemeXSHead = "k'"  , PhonemeXSTail = "i" , PhonemeXSN = "N'" },
+            new jpcommonMora { moraValue = "ガ"  , LyricVSQX = "が",   PhonemeHead = "g" , PhonemeTail = "a", PhonemeXSHead = "g"   , PhonemeXSTail = "a" , PhonemeXSN = "N" },
+            new jpcommonMora { moraValue = "カ"  , LyricVSQX = "か",   PhonemeHead = "k" , PhonemeTail = "a", PhonemeXSHead = "k"   , PhonemeXSTail = "a" , PhonemeXSN = "N" },
+            new jpcommonMora { moraValue = "オ"  , LyricVSQX = "お",   PhonemeHead = "o" , PhonemeTail = "" , PhonemeXSHead = "o"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ォ"  , LyricVSQX = "ぉ",   PhonemeHead = "o" , PhonemeTail = "" , PhonemeXSHead = "o"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "エ"  , LyricVSQX = "え",   PhonemeHead = "e" , PhonemeTail = "" , PhonemeXSHead = "e"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ェ"  , LyricVSQX = "ぇ",   PhonemeHead = "e" , PhonemeTail = "" , PhonemeXSHead = "e"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ウォ", LyricVSQX = "うぉ", PhonemeHead = "w" , PhonemeTail = "o", PhonemeXSHead = "w"   , PhonemeXSTail = "o" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ウェ", LyricVSQX = "うぇ", PhonemeHead = "w" , PhonemeTail = "e", PhonemeXSHead = "w"   , PhonemeXSTail = "e" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ウィ", LyricVSQX = "うぃ", PhonemeHead = "w" , PhonemeTail = "i", PhonemeXSHead = "w"   , PhonemeXSTail = "i" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ウ"  , LyricVSQX = "う",   PhonemeHead = "u" , PhonemeTail = "" , PhonemeXSHead = "M"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ゥ"  , LyricVSQX = "ぅ",   PhonemeHead = "u" , PhonemeTail = "" , PhonemeXSHead = "M"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "イェ", LyricVSQX = "いぇ", PhonemeHead = "y" , PhonemeTail = "e", PhonemeXSHead = "j"   , PhonemeXSTail = "e" , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "イ"  , LyricVSQX = "い",   PhonemeHead = "i" , PhonemeTail = "" , PhonemeXSHead = "i"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ィ"  , LyricVSQX = "ぃ",   PhonemeHead = "i" , PhonemeTail = "" , PhonemeXSHead = "i"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ア"  , LyricVSQX = "あ",   PhonemeHead = "a" , PhonemeTail = "" , PhonemeXSHead = "a"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ァ"  , LyricVSQX = "ぁ",   PhonemeHead = "a" , PhonemeTail = "" , PhonemeXSHead = "a"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ー"  , LyricVSQX = "ー",   PhonemeHead = "a" , PhonemeTail = "" , PhonemeXSHead = "-"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ー"  , LyricVSQX = "ー",   PhonemeHead = "i" , PhonemeTail = "" , PhonemeXSHead = "-"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ー"  , LyricVSQX = "ー",   PhonemeHead = "u" , PhonemeTail = "" , PhonemeXSHead = "-"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ー"  , LyricVSQX = "ー",   PhonemeHead = "e" , PhonemeTail = "" , PhonemeXSHead = "-"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ー"  , LyricVSQX = "ー",   PhonemeHead = "o" , PhonemeTail = "" , PhonemeXSHead = "-"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = ""    , LyricVSQX = "",     PhonemeHead = ""  , PhonemeTail = "" , PhonemeXSHead = ""    , PhonemeXSTail = ""  , PhonemeXSN = "" }
+        };                                                     
+                                                               
+        /// <summary>                                          
+        /// モーラの文字と音素から発音記号（X-SAMPA）を求める  
+        /// </summary>                                         
+        /// <param name="moraValue">モーラの文字</param>       
+        /// <param name="Phoneme">現在の音素</param>           
+        /// <param name="nextPhonemeValue">次の音素</param>    
+        /// <returns>発音記号</returns>                        
         static public string PhonemeXS(string moraValue, string Phoneme,string nextPhonemeValue)
         {
-            //文末で「う」で無声化している場合は音符に「Asp」を設定する
+
+            //音素の無声化情報を削除する。無声化情報は変数に格納する。
+            bool IsVoiceless = false;
+            switch (Phoneme)                                   
+            {                                                  
+                case "A":                                      
+                    Phoneme = "a";
+                    IsVoiceless = true;
+                    break;                                     
+                case "I":                                      
+                    Phoneme = "i";
+                    IsVoiceless = true;
+                    break;                                     
+                case "U":                                      
+                    Phoneme = "u";
+                    IsVoiceless = true;
+                    break;                                     
+                case "E":                                      
+                    Phoneme = "e";
+                    IsVoiceless = true;
+                    break;                                     
+                case "O":                                      
+                    Phoneme = "o";
+                    IsVoiceless = true;
+                    break;                                     
+            };                                                 
+                                                               
+            //無声化してモーラに「’」がある場合は取り除いて判定に使う
+            if (moraValue.Length > 1)                          
+            {                                                  
+                if (moraValue.Substring(1, 1) == "’")         
+                {                                              
+                    moraValue = moraValue.Substring(0, 1);     
+                }                                              
+            }                                                  
+                                                               
+            //発音記号はモーラと音素をもとに配列検索して求める 
+            for (int i = 0; i < jpcommonMoraArray.Length; i++ )
+            {                                                  
+                if ((moraValue == jpcommonMoraArray[i].moraValue) &
+                    (Phoneme   == jpcommonMoraArray[i].PhonemeHead))
+                {                                              
+                    return jpcommonMoraArray[i].PhonemeXSHead ;
+                }else                                          
+                if ((moraValue == jpcommonMoraArray[i].moraValue) &
+                    (Phoneme   == jpcommonMoraArray[i].PhonemeTail))
+                {
+                    //文末で「う」で無声化している場合は母音部分に「Asp」を設定する
+                    if ((Phoneme == "u") &
+                        (IsVoiceless == true) &
+                        (nextPhonemeValue == "sil" | nextPhonemeValue == "pau"))
+                    {
+                        return jpcommonMoraArray[i].PhonemeXSHead + " " + "Asp";
+                    }
+                    else
+                    {
+                        return jpcommonMoraArray[i].PhonemeXSHead + " " + jpcommonMoraArray[i].PhonemeXSTail;
+                    }
+                }                                              
+            };                                                 
+            return Phoneme;                                    
+        }                                                      
+                                                               
+        /// <summary>                                          
+        /// 音素から「ん」の発音記号（X-SAMPA）を求める（Wikipedia「日本語の音韻」の「撥音/N/の子音」の項目参照）
+        /// </summary>                                         
+        /// <param name="nextPhonemeValue">次の音素</param>    
+        /// <param name="afternextPhonemeValue">次の次の音素</param>
+        /// <returns>発音記号</returns>                        
+        static public string PhonemeXSN(string nextPhonemeValue, string afternextPhonemeValue)
+        {                                                      
+            //「ん」の発音記号は次とその次の音素をもとに配列検索して求める
+            for (int i = 0; i < jpcommonMoraArray.Length; i++)
+            {                                                  
+                if ((nextPhonemeValue      == jpcommonMoraArray[i].PhonemeHead) &
+                    (afternextPhonemeValue == jpcommonMoraArray[i].PhonemeTail))
+                {                                              
+                    return jpcommonMoraArray[i].PhonemeXSN;    
+                }                                              
+            };                                                 
+            //「ん」の次の音素が文末で母音の場合向けに次の音素だけで検索
+            for (int i = 0; i < jpcommonMoraArray.Length; i++)
+            {                                                  
+                if (nextPhonemeValue == jpcommonMoraArray[i].PhonemeHead) 
+                {                                              
+                    return jpcommonMoraArray[i].PhonemeXSN;    
+                }                                              
+            };                                                 
+            //見つからなければ文末扱い                         
+            return "N\\";                                      
+        }
+
+        /// <summary>                                          
+        /// モーラの文字と音素から歌詞を求める  
+        /// </summary>                                         
+        /// <param name="moraValue">モーラの文字</param>       
+        /// <param name="Phoneme">現在の音素</param>           
+        /// <returns>歌詞</returns>                        
+        static public string moraToLyric(string moraValue, string Phoneme)
+        {
+
+            //無声化情報を削除する
             switch (Phoneme)
             {
                 case "A":
@@ -230,10 +332,6 @@ namespace TI2VSQX
                     Phoneme = "i";
                     break;
                 case "U":
-                    if (nextPhonemeValue == "sil" | nextPhonemeValue == "pau")
-                    {
-                        return "Asp";
-                    }
                     Phoneme = "u";
                     break;
                 case "E":
@@ -253,62 +351,299 @@ namespace TI2VSQX
                 }
             }
 
-            //発音記号はモーラと音素をもとに配列検索して求める
+            //歌詞はモーラと音素をもとに配列検索して求める 
             for (int i = 0; i < jpcommonMoraArray.Length; i++)
             {
                 if ((moraValue == jpcommonMoraArray[i].moraValue) &
-                    (Phoneme   == jpcommonMoraArray[i].PhonemeHead))
+                    (Phoneme == jpcommonMoraArray[i].PhonemeHead))
                 {
-                    return jpcommonMoraArray[i].PhonemeXSHead;
-                }else
+                    //あ段の母音・「っ」「ん」で合致した場合は発音記号をそのまま変換する。
+                    switch (Phoneme)
+                    {
+                        case "a":
+                            return "あ";
+                        case "i":
+                            return "い";
+                        case "u":
+                            return "う";
+                        case "e":
+                            return "え";
+                        case "o":
+                            return "お";
+                        case "cl":
+                            return "っ";
+                        case "N":
+                            return "ん";
+                        //子音で合致した場合は発音記号をそのまま編集する。
+                        default:
+                            return Phoneme;
+                    }
+                }
+                else
+                //母音部分にモーラ文字をひらがな変換した文字を編集する 
                 if ((moraValue == jpcommonMoraArray[i].moraValue) &
-                    (Phoneme   == jpcommonMoraArray[i].PhonemeTail))
+                    (Phoneme == jpcommonMoraArray[i].PhonemeTail))
                 {
-                    return jpcommonMoraArray[i].PhonemeXSTail;
+                    return jpcommonMoraArray[i].LyricVSQX;
                 }
             };
             return Phoneme;
         }
 
-        /// <summary>
-        /// 音素から「ん」の発音記号（X-SAMPA）を求める（Wikipedia「日本語の音韻」の「撥音/N/の子音」の項目参照）
-        /// </summary>
-        /// <param name="nextPhonemeValue">次の音素</param>
-        /// <param name="afternextPhonemeValue">次の次の音素</param>
-        /// <returns>発音記号</returns>
-        static public string PhonemeXSN(string nextPhonemeValue, string afternextPhonemeValue)
+        /// <summary>                                          
+        /// モーラの文字と音素から発音記号（X-SAMPA）を求める(母音音符モード用)  
+        /// </summary>                                         
+        /// <param name="moraValue">モーラの文字</param>       
+        /// <param name="Phoneme">現在の音素</param>           
+        /// <param name="nextPhonemeValue">次の音素</param>    
+        /// <param name="prevPhonemeValue">前の音素</param>    
+        /// <returns>発音記号</returns>                        
+        static public string PhonemeXS2(string moraValue, string Phoneme, string nextPhonemeValue, string prevPhonemeValue)
         {
-            //「ん」の発音記号は次とその次の音素をもとに配列検索して求める
+
+            //音素の無声化情報を削除する。無声化情報は変数に格納する。
+            bool IsVoiceless = false;
+            switch (Phoneme)
+            {
+                case "A":
+                    Phoneme = "a";
+                    IsVoiceless = true;
+                    break;
+                case "I":
+                    Phoneme = "i";
+                    IsVoiceless = true;
+                    break;
+                case "U":
+                    Phoneme = "u";
+                    IsVoiceless = true;
+                    break;
+                case "E":
+                    Phoneme = "e";
+                    IsVoiceless = true;
+                    break;
+                case "O":
+                    Phoneme = "o";
+                    IsVoiceless = true;
+                    break;
+            };
+
+            //前の音素の無声化情報を削除する。
+            switch (prevPhonemeValue)
+            {
+                case "A":
+                    prevPhonemeValue = "a";
+                    break;
+                case "I":
+                    prevPhonemeValue = "i";
+                    break;
+                case "U":
+                    prevPhonemeValue = "u";
+                    break;
+                case "E":
+                    prevPhonemeValue = "e";
+                    break;
+                case "O":
+                    prevPhonemeValue = "o";
+                    break;
+            };
+
+            //無声化してモーラに「’」がある場合は取り除いて判定に使う
+            if (moraValue.Length > 1)
+            {
+                if (moraValue.Substring(1, 1) == "’")
+                {
+                    moraValue = moraValue.Substring(0, 1);
+                }
+            }
+
+            //発音記号はモーラと音素をもとに配列検索して求める 
             for (int i = 0; i < jpcommonMoraArray.Length; i++)
             {
-                if ((nextPhonemeValue      == jpcommonMoraArray[i].PhonemeHead) &
-                    (afternextPhonemeValue == jpcommonMoraArray[i].PhonemeTail))
+                if ((moraValue == jpcommonMoraArray[i].moraValue) &
+                    (Phoneme == jpcommonMoraArray[i].PhonemeHead))
                 {
-                    return jpcommonMoraArray[i].PhonemeXSN;
+                    //あ段の母音・「っ」「ん」で合致した場合は発音記号をそのまま変換する。
+                    switch (Phoneme)
+                    {
+                        case "a":
+                        case "i":
+                        case "u":
+                        case "e":
+                        case "o":
+                        case "cl":
+                        case "N":
+                            return jpcommonMoraArray[i].PhonemeXSHead;
+                        default:
+                            //子音で合致した場合は前の音素が母音なら引き継ぎ、それ以外は「Asp」にする。
+                            switch (prevPhonemeValue)
+                            {
+                                case "a":
+                                    Phoneme = "a";
+                                    break;
+                                case "i":
+                                    Phoneme = "i";
+                                    break;
+                                case "u":
+                                    Phoneme = "M";
+                                    break;
+                                case "e":
+                                    Phoneme = "e";
+                                    break;
+                                case "o":
+                                    Phoneme = "o";
+                                    break;
+                                //「ん」の場合は本来さらに手前の発音記号をもとに設定するのが正しいが簡易版として「n」を使用する。
+                                //母音音符モードはVOCALOID以外の音声合成エンジンを意識した物であり発音記号はそれほど使わないため。
+                                case "N":
+                                    Phoneme = "n";
+                                    break;
+                                default:
+                                    Phoneme = "Asp";
+                                    break;
+                            }
+                            break;
+                    }
+                    return Phoneme;
+                }
+                else
+                if ((moraValue == jpcommonMoraArray[i].moraValue) &
+                    (Phoneme == jpcommonMoraArray[i].PhonemeTail))
+                {
+                    //文末で「う」で無声化している場合は母音部分に「Asp」を設定する
+                    if ((Phoneme == "u") &
+                        (IsVoiceless == true) &
+                        (nextPhonemeValue == "sil" | nextPhonemeValue == "pau"))
+                    {
+                        return jpcommonMoraArray[i].PhonemeXSHead + " " + "Asp";
+                    }
+                    else
+                    {
+                        return jpcommonMoraArray[i].PhonemeXSHead + " " + jpcommonMoraArray[i].PhonemeXSTail;
+                    }
                 }
             };
-            //「ん」の次の音素が文末で母音の場合向けに次の音素だけで検索
-            for (int i = 0; i < jpcommonMoraArray.Length; i++)
-            {
-                if (nextPhonemeValue == jpcommonMoraArray[i].PhonemeHead) 
-                {
-                    return jpcommonMoraArray[i].PhonemeXSN;
-                }
-            };
-            //見つからなければ文末扱い
-            return "N\\";
+            return Phoneme;
         }
 
-        /// <summary>
-        /// vsq3オブジェクト(VOCALOID3用VSQX)を初期化する
-        /// </summary>
+        /// <summary>                                          
+        /// モーラの文字と音素から歌詞を求める(母音音符モード用)  
+        /// </summary>                                         
+        /// <param name="moraValue">モーラの文字</param>       
+        /// <param name="Phoneme">現在の音素</param>           
+        /// <returns>歌詞</returns>                        
+        static public string moraToLyric2(string moraValue, string Phoneme,string prevPhonemeValue)
+        {
+
+            //無声化情報を削除する
+            switch (Phoneme)
+            {
+                case "A":
+                    Phoneme = "a";
+                    break;
+                case "I":
+                    Phoneme = "i";
+                    break;
+                case "U":
+                    Phoneme = "u";
+                    break;
+                case "E":
+                    Phoneme = "e";
+                    break;
+                case "O":
+                    Phoneme = "o";
+                    break;
+            };
+
+            //前の音素の無声化情報を削除する。
+            switch (prevPhonemeValue)
+            {
+                case "A":
+                    prevPhonemeValue = "a";
+                    break;
+                case "I":
+                    prevPhonemeValue = "i";
+                    break;
+                case "U":
+                    prevPhonemeValue = "u";
+                    break;
+                case "E":
+                    prevPhonemeValue = "e";
+                    break;
+                case "O":
+                    prevPhonemeValue = "o";
+                    break;
+            };
+
+            //無声化してモーラに「’」がある場合は取り除いて判定に使う
+            if (moraValue.Length > 1)
+            {
+                if (moraValue.Substring(1, 1) == "’")
+                {
+                    moraValue = moraValue.Substring(0, 1);
+                }
+            }
+
+            //歌詞はモーラと音素をもとに配列検索して求める 
+            for (int i = 0; i < jpcommonMoraArray.Length; i++)
+            {
+                if ((moraValue == jpcommonMoraArray[i].moraValue) &
+                    (Phoneme == jpcommonMoraArray[i].PhonemeHead))
+                {
+                    //あ段の母音・「っ」「ん」で合致した場合はモーラ文字をそのまま変換する。
+                    switch (Phoneme)
+                    {
+                        case "a":
+                        case "i":
+                        case "u":
+                        case "e":
+                        case "o":
+                        case "cl":
+                        case "N":
+                            return jpcommonMoraArray[i].LyricVSQX;
+                        //子音で合致した場合は前の音素が母音なら引き継ぎ、それ以外は「Asp」にする。
+                        default:
+                            switch (prevPhonemeValue)
+                            {
+                                case "a":
+                                    return "あ";
+                                case "i":
+                                    return "い";
+                                case "u":
+                                    return "う";
+                                case "e":
+                                    return "え";
+                                case "o":
+                                    return "お";
+                                case "cl":
+                                    return "っ";
+                                case "N":
+                                    return "ん";
+                                default:
+                                    return "Asp";
+                            }
+                    }
+                }
+                else
+                //母音部分にモーラ文字をひらがな変換した文字を編集する 
+                if ((moraValue == jpcommonMoraArray[i].moraValue) &
+                    (Phoneme == jpcommonMoraArray[i].PhonemeTail))
+                {
+                    return jpcommonMoraArray[i].LyricVSQX;
+                }
+            };
+            return Phoneme;
+        }
+
+        /// <summary>                                          
+        /// vsq3オブジェクト(VOCALOID3用VSQX)を初期化する      
+        /// </summary>                                         
         /// <param name="compIDValue">シンガーのcompID</param>
-        /// <param name="vVoiceNamevalue">シンガー名</param>
+        /// <param name="vVoiceNamevalue">シンガー名</param>   
         /// <returns>vsq3クラスのオブジェクト（初期設定済）</returns>
         static vsq3 VSQX_Init(string compIDValue, string vVoiceNamevalue)
-        {
-            vsq3 VSQX = new vsq3();
-
+        {                                                      
+            vsq3 VSQX = new vsq3();                            
+                                                               
             VSQX.vender = new XmlDocument().CreateCDataSection("Yamaha corporation");
             VSQX.version = new XmlDocument().CreateCDataSection("3.0.0.11");
 
@@ -448,20 +783,31 @@ namespace TI2VSQX
         /// <param name="posTickValue">音符位置（Tick値）</param>
         /// <param name="durTickValue">音符長さ（Tick値）</param>
         /// <returns>vsq3クラスの音符</returns>
-        static note VSQX_note(TIF I01TIF, byte noteNumValue, Double posTickValue, Double durTickValue)
+        static note VSQX_note(TIF I01TIF, byte noteNumValue, Double posTickValue, Double durTickValue, TI2VSQXConfig TI2VSQXCFG)
         {
             string PhonemeXSValue;
+            string lyricS;
 
             //空白は音符の長さを64分音符1個分にする(メインロジックと重複しているが念のため入れておく)
             if (I01TIF.PhonemeCurrent == "sil" | I01TIF.PhonemeCurrent == "pau")
                 {
                 PhonemeXSValue = "Asp";
+                lyricS = "Asp";
                 durTickValue = 30;
             }
             else
             {
                 //トレース情報の音素をもとにボーカロイドで使う発音記号を求める。
-                PhonemeXSValue = PhonemeXS(I01TIF.MoraCurrent, I01TIF.PhonemeCurrent, I01TIF.PhonemeNext);
+                if (TI2VSQXCFG.NoteSplitMode == TI2VSQXConfig.NoteSplitMode_Consonant)
+                {
+                    PhonemeXSValue = PhonemeXS(I01TIF.MoraCurrent, I01TIF.PhonemeCurrent, I01TIF.PhonemeNext);
+                    lyricS = moraToLyric(I01TIF.MoraCurrent, I01TIF.PhonemeCurrent);
+                }
+                else
+                {
+                    PhonemeXSValue = PhonemeXS2(I01TIF.MoraCurrent, I01TIF.PhonemeCurrent, I01TIF.PhonemeNext, I01TIF.PhonemePrev);
+                    lyricS = moraToLyric2(I01TIF.MoraCurrent, I01TIF.PhonemeCurrent, I01TIF.PhonemePrev);
+                }
                 //音素が「ン」の場合は次のモーラの音素を参照して発音記号を求める。
                 if (I01TIF.MoraCurrent == "ン")
                 {
@@ -475,11 +821,11 @@ namespace TI2VSQX
                 durTick = (int)durTickValue,
                 noteNum = noteNumValue,
                 velocity = 64,
-                lyric = new XmlDocument().CreateCDataSection(I01TIF.PhonemeCurrent),
+                lyric = new XmlDocument().CreateCDataSection(lyricS),
 
                 phnms = new typePhonemes
                 {
-                    //歌詞がトレース情報の音素情報であり発音記号に変換できないため、プロテクトをかけて発音記号が崩れないようにする。
+                    //子音部分の歌詞がトレース情報の音素情報であり発音記号に変換できないため、プロテクトをかけて発音記号が崩れないようにする。
                     @lock = 1,
                     lockSpecified = true,
                     Value = PhonemeXSValue
@@ -518,6 +864,10 @@ namespace TI2VSQX
             public Double NaturalEndNoteNum;
             public Double BottomNoteNum;
             public Double QuestionNoteNum;
+            public Double NoteSplitMode;
+
+            public const Double NoteSplitMode_Consonant = 1;    //子音単独音素を分割して前に置く(通常方式)  
+            public const Double NoteSplitMode_Vowel = 2;        //母音単独音素を分割して後ろに置く(UTAUなど他の歌声合成方式変換用)
 
             /// <summary>
             /// 各種動作設定を扱うクラスのコンストラクタ
@@ -534,6 +884,7 @@ namespace TI2VSQX
                 NaturalEndNoteNum = 68.00;
                 BottomNoteNum     = 60.00;
                 QuestionNoteNum   = 66.00;
+                NoteSplitMode     =  1.00;
 
                 if (!System.IO.File.Exists(sConfigpass))
                 {
@@ -624,6 +975,17 @@ namespace TI2VSQX
                                 QuestionNoteNum = 64.00;
                             }
                             break;
+                        case "NoteSplitMode":
+                            NoteSplitMode = Convert.ToInt32(item[1]);
+                            if ((1 <= NoteSplitMode) & (NoteSplitMode <= 2))
+                            {
+                                NoteSplitMode = NoteSplitMode * 1.00;
+                            }
+                            else
+                            {
+                                NoteSplitMode = 1.00;
+                            }
+                            break;
                     }
                     CFG_Line = srConfig.ReadLine();
                 }
@@ -638,11 +1000,12 @@ namespace TI2VSQX
         public static  double MicroSecondToTick(double MicroSecond)
         {
             //秒数を64分音符の個数に変換する。BPM150なので64分音符1個は25ms。
-            MicroSecond = MicroSecond / 10000 / 25.00;
-            MicroSecond = Math.Round(MicroSecond);
-            //64分音符の個数をtick値に変換する。64分音符1個は30tick。
-            MicroSecond = MicroSecond * 30;
-            return MicroSecond;
+            Decimal MicroSecondD = (Decimal)MicroSecond;
+            MicroSecondD = MicroSecondD / 25m;
+            MicroSecondD = MicroSecondD / 10000m;
+            MicroSecondD = Math.Round(MicroSecondD);
+            MicroSecondD = MicroSecondD * 30m;
+            return (double)MicroSecondD;
         }
 
         /// <summary>
@@ -770,7 +1133,7 @@ namespace TI2VSQX
                     durTickValue = MicroSecondToTick(I01TIF.PhonemeTo - I01TIF.PhonemeFrom);
 
                     //音符を配列に追加
-                    noteArray[noteIdx] = VSQX_note(I01TIF, (byte)TI2VSQXCFG.BaseNoteNum, posTickValue, durTickValue);
+                    noteArray[noteIdx] = VSQX_note(I01TIF, (byte)TI2VSQXCFG.BaseNoteNum, posTickValue, durTickValue, TI2VSQXCFG);
                     TIFArray[noteIdx]  = I01TIF;
 
                     //１モーラ目～４モーラ目までの開始位置の音符の位置情報を取得する
@@ -835,6 +1198,12 @@ namespace TI2VSQX
                     //次のトレース情報レコードを読む
                     I01_Line = srTIF.ReadLine();
                     I01TIF   = new TIF(I01_Line);
+                }
+
+                //文字数が短いなど、上記ロジックでアクセント下降開始位置が求められない場合は句末を下降開始位置とする。
+                if (MoraDownStart == "")
+                {
+                    MoraNoteIdxDownStart = MoraNoteIdxEnd;
                 }
 
                 //呼気段落内に音素がある場合は(「音素がない」のは先頭空白のみのはず）
@@ -916,6 +1285,26 @@ namespace TI2VSQX
                     MoraLocStart     = MoraLoc2;
                     MoraNoteIdxStart = MoraNoteIdx2;
 
+                    //３モーラ目がない場合は１モーラ目直後にする
+                    if (Mora3 == "")
+                    {
+                        MoraTop = Mora1;
+                        MoraLocTop = MoraLoc2;
+                        MoraNoteIdxTop = MoraNoteIdx2;
+                        MoraLocStart = MoraLoc1;
+                        MoraNoteIdxStart = MoraNoteIdx1;
+                    }
+
+                    //２モーラ目がない場合は１モーラ目にする
+                    if (Mora2 == "")
+                    {
+                        MoraTop = Mora1;
+                        MoraLocTop = MoraLoc1;
+                        MoraNoteIdxTop = MoraNoteIdx1;
+                        MoraLocStart = MoraLoc1;
+                        MoraNoteIdxStart = MoraNoteIdx1;
+                    }
+
                     //２モーラ目が「ん」あるいは「ー」の場合は１モーラ目直後にずらす
                     if (MoraTop == "ン" | MoraTop == "ー")
                     {
@@ -946,6 +1335,7 @@ namespace TI2VSQX
                         MoraNoteIdxStart = MoraNoteIdx1;
                     }
 
+
                     //句頭上昇部分の音階を設定する
                     noteArray[MoraNoteIdxTop].noteNum     = (byte)TI2VSQXCFG.TopNoteNum;
                     if (MoraNoteIdxTop != MoraNoteIdx1)
@@ -954,75 +1344,47 @@ namespace TI2VSQX
                     } 
 
                     //音階頂点位置から呼気段落末(音の高さは自然下降のみとする)までの傾きを求める
-                    double SlopeNatural = (TI2VSQXCFG.NaturalEndNoteNum - TI2VSQXCFG.TopNoteNum) / (MoraLocEnd - MoraLocTop);
+                    Decimal SlopeNatural = (Decimal)(TI2VSQXCFG.NaturalEndNoteNum - TI2VSQXCFG.TopNoteNum) / (MoraLocEnd - MoraLocTop);
 
-                    //一旦、音の高さは自然下降のみとして、音階頂点位置から呼気段落末手前までの音階を設定する
-                    for (int i = MoraNoteIdxTop + 1; i <= MoraNoteIdxEnd; i++)
+                    //アクセント核からあとの時間の合計を求める
+                    Decimal SlopeLen = 0;
+                    Decimal SlopeEnd = 0;
+                    for (int i = MoraNoteIdxDownStart; i <= MoraNoteIdxEnd; i++)
                     {
-                        double x1 = (noteArray[i].posTick - noteArray[MoraNoteIdxTop].posTick);
-                        x1 = x1 * SlopeNatural;
-                        x1 = x1 + TI2VSQXCFG.TopNoteNum;
-                        noteArray[i].noteNum = (byte)Math.Round(x1);
+                        int MoraDiff = Convert.ToInt32(TIFArray[i].MoraDiffAccent);
+                        if (MoraDiff > 0)
+                        {
+                            SlopeLen = SlopeLen + noteArray[i].durTick;
+                            //アクセント核からあとの下降時の傾きを求める
+                            SlopeEnd = (Decimal)(TI2VSQXCFG.BottomNoteNum - TI2VSQXCFG.NaturalEndNoteNum) / SlopeLen;
+                        }
                     }
 
-                    //アクセント核がある場合は
-                    if (MoraDownStart != "")
+                    Decimal DownPos = 0;
+                    Decimal x1 = 0;
+                    Decimal x2 = 0;
+                    Decimal x3 = 0;
+                    for (int i = MoraNoteIdxTop + 1; i <= MoraNoteIdxEnd; i++)
                     {
-                        int MoraDiff = 0;
+                        //自然下降のみとして、音階頂点位置からの音階下げ幅を求める
+                        x1 = (noteArray[i].posTick - noteArray[MoraNoteIdxTop].posTick);
+                        x1 = x1 * SlopeNatural;
 
-                        //下降開始位置から呼気段落末までの時間（但し、アクセント核手前の音素を除く）を求める
-                        double SlopeLen = 0;
-                        for (int i = MoraNoteIdxDownStart ; i <= MoraNoteIdxEnd; i++)
+                        //アクセント核がある場合は
+                        if (MoraDownStart != "")
                         {
-                            MoraDiff = Convert.ToInt32(TIFArray[i].MoraDiffAccent);
-                            if (MoraDiff >= 0)
+                            int MoraDiff = Convert.ToInt32(TIFArray[i].MoraDiffAccent);
+                            //アクセント核からあとは句末への下降部分の音階下げ幅を求める
+                            if (MoraDiff > 0)
                             {
-                                SlopeLen = SlopeLen + noteArray[i].durTick;
+                                x2 = DownPos * SlopeEnd;
+                                DownPos = DownPos + noteArray[i].durTick;
                             }
                         }
 
-                        //下降開始位置から呼気段落末までの傾きを求める
-                        double SlopeEnd = (TI2VSQXCFG.BottomNoteNum - noteArray[MoraNoteIdxDownStart].noteNum) / SlopeLen;
-                        double x2 = 0;
-                        double SlopePos = noteArray[MoraNoteIdxDownStart].posTick;
-                        MoraDiff = 0;
-                        double DownLen   = 0;
-                        double DownWidth = 0;
-                        double DownPos   = 0;
-                        //下降開始位置から呼気段落末までの音階を設定する
-                        for (int i = MoraNoteIdxDownStart; i <= MoraNoteIdxEnd; i++)
-                        {
-                            MoraDiff = Convert.ToInt32(TIFArray[i].MoraDiffAccent);
-                            //アクセント核手前では自然下降でノート位置を求める
-                            if (MoraDiff < 0)
-                            {
-                                DownLen   = (noteArray[i].posTick - noteArray[MoraNoteIdxDownStart].posTick);
-                                DownWidth = DownLen * SlopeNatural;
-                                x2 = DownWidth + DownPos;
-                                noteArray[i].noteNum = (byte)Math.Round(x2);
-                            }
-                            //アクセント核からあとは句末への下降傾きを適用する
-                            else
-                            {
-                                DownLen   = (SlopePos - noteArray[MoraNoteIdxDownStart].posTick);
-                                DownWidth = DownLen * SlopeEnd;
-                                x2 = DownWidth + noteArray[MoraNoteIdxDownStart].noteNum;
-                                DownPos  = x2;
-                                SlopePos = SlopePos + noteArray[i].durTick;
-                                noteArray[i].noteNum = (byte)Math.Round(x2);
-                                //計算の結果上昇するなら前の音階とそろえる
-                                if (MoraDiff == 0)
-                                {
-                                    if (i != MoraNoteIdxDownStart)
-                                    { 
-                                        if (noteArray[i].noteNum > noteArray[i - 1].noteNum)
-                                        {
-                                            noteArray[i].noteNum = noteArray[i - 1].noteNum;
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        //自然下降の下げ幅とアクセント核から後の下降時の下げ幅の合算を音階下げ幅とする
+                        x3 = (Decimal)TI2VSQXCFG.TopNoteNum +  x1 + x2 ;
+                        noteArray[i].noteNum = (byte)Math.Round(x3);
                     }
 
                     //呼気段落末直後の空白音符の音階を設定する。
@@ -1058,7 +1420,7 @@ namespace TI2VSQX
                     durTickValue = 30;
 
                     //呼気段落末直後の空白音符を追加する
-                    noteArray[noteIdx] = VSQX_note(I01TIF, noteNumValue, posTickValue, durTickValue);
+                    noteArray[noteIdx] = VSQX_note(I01TIF, noteNumValue, posTickValue, durTickValue, TI2VSQXCFG);
                     noteIdx++;
                     T01TIF.Add(I01TIF);
 
