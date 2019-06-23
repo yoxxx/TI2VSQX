@@ -51,7 +51,7 @@ namespace TI2VSQX
             new jpcommonMora { moraValue = "ヴァ", LyricVSQX = "ヴァ", PhonemeHead = "v" , PhonemeTail = "a", PhonemeXSHead = "b"   , PhonemeXSTail = "a" , PhonemeXSN = "n" },
             new jpcommonMora { moraValue = "ヴ"  , LyricVSQX = "ヴ",   PhonemeHead = "v" , PhonemeTail = "u", PhonemeXSHead = "b"   , PhonemeXSTail = "M" , PhonemeXSN = "n" },
             new jpcommonMora { moraValue = "ン"  , LyricVSQX = "ん",   PhonemeHead = "N" , PhonemeTail = "" , PhonemeXSHead = "N\\" , PhonemeXSTail = ""  , PhonemeXSN = "n" },
-            new jpcommonMora { moraValue = "ヲ"  , LyricVSQX = "うぉ", PhonemeHead = "o" , PhonemeTail = "" , PhonemeXSHead = "o"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
+            new jpcommonMora { moraValue = "ヲ"  , LyricVSQX = "を",   PhonemeHead = "o" , PhonemeTail = "" , PhonemeXSHead = "o"   , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
             new jpcommonMora { moraValue = "ヱ"  , LyricVSQX = "ゑ",   PhonemeHead = "e" , PhonemeTail = "" , PhonemeXSHead = "w e" , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
             new jpcommonMora { moraValue = "ヰ"  , LyricVSQX = "ゐ",   PhonemeHead = "i" , PhonemeTail = "" , PhonemeXSHead = "w i" , PhonemeXSTail = ""  , PhonemeXSN = "N\\" },
             new jpcommonMora { moraValue = "ワ"  , LyricVSQX = "わ",   PhonemeHead = "w" , PhonemeTail = "a", PhonemeXSHead = "w"   , PhonemeXSTail = "a" , PhonemeXSN = "N\\" },
@@ -589,18 +589,25 @@ namespace TI2VSQX
                 if ((moraValue == jpcommonMoraArray[i].moraValue) &
                     (Phoneme == jpcommonMoraArray[i].PhonemeHead))
                 {
-                    //あ段の母音・「っ」「ん」で合致した場合はモーラ文字をそのまま変換する。
+                    //発音記号があ段の母音・「っ」「ん」で合致した場合は、その発音記号から変換する。
+                    //モーラ文字が長音の場合もここで歌詞変換する。「っ」はUTAUの休符である「R」にする。
                     switch (Phoneme)
                     {
                         case "a":
+                            return "あ";
                         case "i":
+                            return "い";
                         case "u":
+                            return "う";
                         case "e":
+                            return "え";
                         case "o":
+                            return "お";
                         case "cl":
+                            return "R";
                         case "N":
-                            return jpcommonMoraArray[i].LyricVSQX;
-                        //子音で合致した場合は前の音素が母音なら引き継ぎ、それ以外は「Asp」にする。
+                            return "ん";
+                        //子音で合致した場合は前の音素が母音なら引き継ぎ、それ以外はUTAUの休符である「R」にする。
                         default:
                             switch (prevPhonemeValue)
                             {
@@ -615,11 +622,11 @@ namespace TI2VSQX
                                 case "o":
                                     return "お";
                                 case "cl":
-                                    return "っ";
+                                    return "R";
                                 case "N":
                                     return "ん";
                                 default:
-                                    return "Asp";
+                                    return "R";
                             }
                     }
                 }
